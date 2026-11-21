@@ -425,6 +425,69 @@ table.t.big td{padding:16px}
 .qpair figcaption{font-size:var(--xs);color:var(--muted);text-align:center;line-height:1.35}
 .read .qpair figure{width:140px}
 
+/* ---------- RUF 2.0 ---------- */
+.qpair.three figure{width:168px}
+.read .qpair.three{flex-wrap:wrap}
+.read .qpair.three figure{width:120px}
+.vs{display:grid;grid-template-columns:minmax(0,1fr) 56px minmax(0,1fr);align-items:stretch}
+.read .vs{grid-template-columns:minmax(0,1fr);gap:8px}
+.vs-card{border-radius:18px;padding:20px 24px;display:flex;flex-direction:column;gap:12px;border:1.5px solid var(--line);background:var(--bg)}
+.vs-card.old{background:var(--panel)}
+.vs-card.new{border-color:var(--orchid);background:color-mix(in srgb,var(--orchid-soft) 60%,var(--bg))}
+.vs-ex{font-size:calc(var(--s)*1.05);color:var(--orchid);font-weight:600}
+.vs-card.old .vs-ex{color:var(--muted)}
+.vs-arrow{display:grid;place-items:center;font:400 44px var(--display);color:var(--muted)}
+.read .vs-arrow{transform:rotate(90deg);font-size:28px;height:32px}
+.flow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:10px}
+.read .flow{grid-template-columns:minmax(0,1fr)}
+.flow li{display:flex;flex-direction:column;gap:4px;padding:12px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);font-size:var(--xs);line-height:1.3;color:var(--muted)}
+.flow li b{font:700 var(--s)/1.15 var(--sans);color:var(--fg)}
+.flow li.run{border-color:var(--orchid);background:var(--orchid-soft)}
+.flow li.hu{border-color:var(--olive);background:var(--olive-soft)}
+.calc{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:44px;flex:1;min-height:0;align-items:start}
+.read .calc{grid-template-columns:minmax(0,1fr);gap:20px}
+.calc-in{display:flex;flex-direction:column;gap:18px}
+.presets{display:flex;gap:8px;flex-wrap:wrap}
+.presets .chip{font-size:var(--xs)}
+.sl{display:grid;grid-template-columns:minmax(0,1fr) 110px;gap:4px 16px;align-items:center}
+.sl label{grid-column:1/-1;font-weight:600;font-size:var(--s)}
+.sl input{width:100%;accent-color:var(--orchid);height:26px}
+.sl output{font:600 var(--s) var(--machine);text-align:right;font-variant-numeric:tabular-nums}
+.ex-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.calc-out{display:flex;flex-direction:column;gap:14px;padding:26px 30px;border-radius:20px;border:1.5px solid var(--orchid);background:color-mix(in srgb,var(--orchid-soft) 55%,var(--bg))}
+.rus-big{font-size:calc(var(--hero)*1.05);line-height:1;color:var(--orchid);font-weight:600}
+.rus-formula{font-size:var(--xs);color:var(--muted);line-height:1.6}
+.verdicts{display:flex;flex-direction:column;gap:10px}
+.verdict{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;font-size:var(--s);line-height:1.35}
+.rus-wrap{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:44px;flex:1;min-height:0}
+.read .rus-wrap{grid-template-columns:minmax(0,1fr);gap:24px}
+.rus-chart{display:flex;flex-direction:column;min-height:300px;padding:28px 0 0 50px}
+.read .rus-chart{height:320px}
+.rus-plot{position:relative;flex:1;min-height:220px;border-bottom:1.5px solid var(--fg)}
+.rus-grid{position:absolute;left:0;right:0;height:0;border-top:1px dashed var(--line)}
+.rus-grid span{position:absolute;left:-50px;top:-.7em;width:42px;text-align:right;font:var(--xs) var(--machine);color:var(--muted)}
+.rus-cols{position:absolute;inset:0;display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:10px;align-items:end;padding:0 4px}
+.read .rus-cols{gap:5px}
+.rbar{position:relative;height:calc(var(--v)*100%);border:0;border-radius:8px 8px 0 0;background:var(--orchid);opacity:.62;cursor:pointer;padding:0;transition:opacity .2s,box-shadow .2s}
+.rbar.calm{background:var(--muted)}
+.rbar:hover{opacity:.85}
+.rbar[aria-pressed="true"]{opacity:1;box-shadow:0 0 0 3px var(--bg),0 0 0 5px var(--fg)}
+.rbar .v{position:absolute;top:-1.6em;left:-6px;right:-6px;text-align:center;font:600 var(--xs) var(--machine);color:var(--fg)}
+.read .rbar .v{font-size:10px}
+.rus-x{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:10px;padding:8px 4px 0;font:var(--xs) var(--machine);color:var(--muted);text-align:center}
+.read .rus-x{gap:5px}
+.rus-x b{display:block;color:var(--fg)}
+.rus-detail{display:flex;flex-direction:column;gap:12px;min-width:0}
+.rus-detail .dn{font:400 calc(var(--t2)*1.15)/1.1 var(--display);color:var(--olive)}
+.tc{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 10px;font-size:var(--xs);align-items:baseline}
+.tc .mono{font-weight:600}
+.tc .tr{grid-column:1/-1;height:12px;border-radius:6px;background:var(--panel);border:1px solid var(--line);overflow:hidden}
+.tc .tr i{display:block;height:100%;width:calc(var(--v)*1%);background:var(--orchid)}
+.kv{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.read .kv{grid-template-columns:repeat(2,minmax(0,1fr))}
+.kv div{border:1px solid var(--line);border-radius:10px;padding:8px 10px;background:var(--panel);min-width:0}
+.kv small{display:block;font:700 11px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.kv b{font:600 var(--s) var(--machine)}
 #app[data-lang="en"] .lg-pt,#app:not([data-lang="en"]) .lg-en{display:none!important}
 #hud .lang-btn{font:700 12px var(--sans);letter-spacing:.04em}
 @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
@@ -451,7 +514,6 @@ table.t.big td{padding:16px}
     <div class="tgrid">
       <div class="tmain">
         <img class="logo" src="data:image/png;base64,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" alt="U.Porto · Faculdade de Psicologia e de Ciências da Educação">
-        <p class="eyebrow">Aula 9</p>
         <h1 class="h hero">Investigação Qualitativa na Era da Inteligência Artificial</h1>
         <p class="tsub">Da Utilização de Ferramentas à Colaboração Humano–IA</p>
         <p class="author">António Pedro Costa<span>apcosta@fpce.up.pt · CIIE – FPCEUP</span></p>
@@ -857,6 +919,126 @@ table.t.big td{padding:16px}
     <aside class="notes">3 min, o centro da secção. Percorrer as três linhas de cima para baixo. O argumento está na última coluna e na nota: só a hesitação melhora com um limiar mais baixo. A confiança cega não deixa rasto e o silêncio nem sequer é detetável por via distribucional. É aqui que ligo à demonstração do RUF.</aside>
   </section>
 
+  <!-- RUF 2.0 · a -->
+  <section class="slide" data-section="RUF 2.0">
+    <div class="head-row">
+      <div class="head">
+        <p class="eyebrow"><span class="lg-pt">RUF 2.0 · o que mudou</span><span class="lg-en">RUF 2.0 · what changed</span></p>
+        <h2 class="h"><span class="lg-pt">Do RUF ao RUF 2.0</span><span class="lg-en">From RUF to RUF 2.0</span></h2>
+      </div>
+      <div style="display:flex;gap:14px;align-items:center"><p class="xs muted" style="text-align:right;max-width:17ch"><span class="lg-pt">Experimentar o RUF 2.0 (ChatGPT)</span><span class="lg-en">Try RUF 2.0 (ChatGPT)</span></p><div class="qrbox" style="width:110px;padding:8px" data-qr-url="https://chatgpt.com/g/g-69322a0d399881918639969107de0d09-ruf-2-0" role="img" aria-label="QR RUF 2.0"></div></div>
+    </div>
+    <div class="vs">
+      <div class="vs-card old">
+        <p class="eyebrow">RUF · 2025</p>
+        <p class="vs-ex mono"><span class="lg-pt">empatia 72% · permissividade 68%</span><span class="lg-en">empathy 72% · permissiveness 68%</span></p>
+        <ul class="list small">
+          <li><span class="lg-pt">Cada categoria recebe a sua própria percentagem</span><span class="lg-en">Each category gets its own percentage</span></li>
+          <li><span class="lg-pt">Um intervalo de certeza decide o que entra na análise</span><span class="lg-en">A certainty range decides what enters the analysis</span></li>
+          <li><span class="lg-pt">A proximidade entre categorias só conta se alguém a ler</span><span class="lg-en">The gap between categories only counts if someone reads it</span></li>
+        </ul>
+      </div>
+      <div class="vs-arrow" aria-hidden="true">→</div>
+      <div class="vs-card new">
+        <p class="eyebrow">RUF 2.0</p>
+        <p class="vs-ex mono">RUS = 0,40·D + 0,40·C + 0,20·S</p>
+        <ul class="list small">
+          <li><span class="lg-pt">Sem intervalo de percentagens: os pesos repartem-se pelas categorias e são indicadores heurísticos, não probabilidades calibradas</span><span class="lg-en">No percentage range: weights are shared across categories and are heuristic indicators, not calibrated probabilities</span></li>
+          <li><span class="lg-pt">A incerteza mede-se em relação: distância entre as duas categorias mais prováveis (Δ), dispersão (entropia) e estabilidade</span><span class="lg-en">Uncertainty is measured relationally: the gap between the two most likely categories (Δ), dispersion (entropy) and stability</span></li>
+          <li><span class="lg-pt"><b>O limiar deixa de excluir:</b> quando a evidência é fraca, ativa mais reflexão (RUF-2)</span><span class="lg-en"><b>The threshold no longer excludes:</b> when evidence is weak, it triggers more reflection (RUF-2)</span></li>
+        </ul>
+      </div>
+    </div>
+    <ol class="flow" aria-label="RUF 2.0">
+      <li data-f="1"><b><span class="lg-pt">Livro de códigos</span><span class="lg-en">Codebook</span></b><span class="lg-pt">gerado ou importado, validado pelo investigador</span><span class="lg-en">generated or imported, validated by the researcher</span></li>
+      <li data-f="1"><b><span class="lg-pt">Natureza do estudo</span><span class="lg-en">Type of study</span></b><span class="lg-pt">exploratório, confirmatório, balanceado, crítico-reflexivo ou aula</span><span class="lg-en">exploratory, confirmatory, balanced, critical-reflexive or classroom</span></li>
+      <li data-f="1"><b><span class="lg-pt">Parâmetros</span><span class="lg-en">Parameters</span></b><span class="lg-pt">τ, Δ, entropia, justificações, variações, evidência fraca, pesos RUS</span><span class="lg-en">τ, Δ, entropy, justifications, variations, weak evidence, RUS weights</span></li>
+      <li data-f="2" class="run"><b>RUF-1</b><span class="lg-pt">codificação e incerteza quantitativa</span><span class="lg-en">coding and quantitative uncertainty</span></li>
+      <li data-f="2" class="run"><b>RUF-2</b><span class="lg-pt">justificação contrastiva e estabilidade</span><span class="lg-en">contrastive justification and stability</span></li>
+      <li data-f="2" class="run"><b>RUF-3</b><span class="lg-pt">tabela reflexiva: afirmação e pergunta por segmento</span><span class="lg-en">reflexive table: statement and question per segment</span></li>
+      <li data-f="3" class="hu"><b><span class="lg-pt">Investigador</span><span class="lg-en">Researcher</span></b><span class="lg-pt">revê, decide e regista memos</span><span class="lg-en">reviews, decides and writes memos</span></li>
+    </ol>
+    <aside class="notes"><span class="lg-pt">Passagem do RUF ao RUF 2.0. Ligar ao problema do limiar: no Pattyn, abaixo de 40% o par fica vazio; no RUF 2.0, evidência fraca (top-1 abaixo de 0,35) ou ambiguidade ativam mais reflexão (RUF-2). → revela o fluxo em três tempos: validação humana, as três passagens RUF e a decisão do investigador.</span><span class="lg-en">Transition from RUF to RUF 2.0. Link to the threshold problem: in Pattyn, below 40% the pair is left empty; in RUF 2.0, weak evidence (top-1 below 0.35) or ambiguity triggers more reflection (RUF-2). → reveals the workflow in three steps: human validation, the three RUF passes and the researcher's decision.</span></aside>
+  </section>
+
+  <!-- RUF 2.0 · b -->
+  <section class="slide" data-section="RUF 2.0">
+    <div class="head">
+      <p class="eyebrow"><span class="lg-pt">RUF 2.0 · experimentem</span><span class="lg-en">RUF 2.0 · try it</span></p>
+      <h2 class="h"><span class="lg-pt">O índice de incerteza RUS</span><span class="lg-en">The RUS uncertainty index</span></h2>
+    </div>
+    <div class="calc" id="calc">
+      <div class="calc-in">
+        <div class="presets" role="group" aria-label="Preset" id="presets"></div>
+        <div class="sl"><label for="cDelta"><span class="lg-pt">Δ · distância entre as duas categorias mais prováveis</span><span class="lg-en">Δ · gap between the two most likely categories</span></label><input type="range" id="cDelta" min="0" max="30" step="0.01" value="0"><output id="oDelta"></output></div>
+        <div class="sl"><label for="cH"><span class="lg-pt">Entropia normalizada · dispersão entre categorias</span><span class="lg-en">Normalised entropy · dispersion across categories</span></label><input type="range" id="cH" min="0" max="1" step="0.001" value="0.71"><output id="oH"></output></div>
+        <div class="sl"><label for="cS"><span class="lg-pt">Instabilidade · cenários divergentes em 5</span><span class="lg-en">Instability · diverging scenarios out of 5</span></label><input type="range" id="cS" min="0" max="1" step="0.2" value="0.4"><output id="oS"></output></div>
+        <div class="sl"><label for="cTop"><span class="lg-pt">Peso da categoria dominante (top-1)</span><span class="lg-en">Weight of the dominant category (top-1)</span></label><input type="range" id="cTop" min="0" max="100" step="0.1" value="29.8"><output id="oTop"></output></div>
+        <div class="ex-row"><span class="xs muted"><span class="lg-pt">Carregar do teste:</span><span class="lg-en">Load from the test:</span></span><button type="button" class="chip" data-ex="3">C3</button><button type="button" class="chip" data-ex="6">C6</button><button type="button" class="chip" data-ex="7">C7</button></div>
+      </div>
+      <div class="calc-out" aria-live="polite">
+        <p class="eyebrow">RUS</p>
+        <p class="rus-big mono" id="rusVal">0,000</p>
+        <p class="rus-formula mono" id="rusFormula"></p>
+        <div class="verdicts">
+          <p class="verdict" id="vAmb"></p>
+          <p class="verdict" id="vRuf2"></p>
+        </div>
+        <p class="xs muted" id="calcNote"></p>
+      </div>
+    </div>
+    <aside class="notes"><span class="lg-pt">Como usar: carreguem C3 (empate, Δ = 0), C6 (o RUS mais alto) e depois C7 (punição 47,2%). Mostrem que em C7 nenhum limiar dispara, o RUF-2 não é ativado e o S conta como 0 por convenção: o RUS mais baixo do corpus vem da confiança, não da ausência de problema. Fórmulas e parâmetros tal como o RUF 2.0 os apresenta (preset exploratório).</span><span class="lg-en">How to use: load C3 (tie, Δ = 0), C6 (the highest RUS) and then C7 (punishment 47.2%). Show that in C7 no threshold fires, RUF-2 is not triggered and S counts as 0 by convention: the lowest RUS in the corpus comes from confidence, not from the absence of a problem. Formulas and parameters as RUF 2.0 presents them (exploratory preset).</span></aside>
+  </section>
+
+  <!-- RUF 2.0 · c -->
+  <section class="slide" data-section="RUF 2.0">
+    <div class="head-row">
+      <div class="head">
+        <p class="eyebrow"><span class="lg-pt">RUF 2.0 · teste com o corpus «Se eu fosse professor»</span><span class="lg-en">RUF 2.0 · test with the “If I were a teacher” corpus</span></p>
+        <h2 class="h"><span class="lg-pt">O RUF 2.0 no mesmo corpus</span><span class="lg-en">RUF 2.0 on the same corpus</span></h2>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>8/9</b><span><span class="lg-pt">ambíguas</span><span class="lg-en">ambiguous</span></span></div>
+        <div class="stat"><b>7/9</b><span><span class="lg-pt">instáveis</span><span class="lg-en">unstable</span></span></div>
+        <div class="stat"><b class="rus-mean">0,730</b><span><span class="lg-pt">RUS médio</span><span class="lg-en">mean RUS</span></span></div>
+      </div>
+    </div>
+    <div class="rus-wrap">
+      <div class="rus-chart" id="rusChart" role="group" aria-label="RUS"></div>
+      <div class="rus-detail" id="rusDetail" aria-live="polite"></div>
+    </div>
+    <p class="xs muted"><span class="lg-pt">Teste de 21/11/2026 com o RUF 2.0 sobre as 9 composições originais, cada uma tratada como unidade de análise (preset exploratório, livro de códigos indutivo com 10 categorias). Valores heurísticos: podem variar entre execuções.</span><span class="lg-en">Test run on 21/11/2026 with RUF 2.0 on the 9 original compositions, each treated as one unit of analysis (exploratory preset, inductive codebook with 10 categories). Heuristic values: they may vary between runs.</span></p>
+    <aside class="notes"><span class="lg-pt">Como usar: cliquem numa barra para ver os dois códigos mais fortes, Δ, entropia, RUS e a pergunta reflexiva do RUF-3. A barra cinzenta é C7, a única não ambígua. As composições 4 e 6 têm o RUS mais alto e são as que o RUF 2.0 manda rever primeiro.</span><span class="lg-en">How to use: click a bar to see the two strongest codes, Δ, entropy, RUS and the RUF-3 reflexive question. The grey bar is C7, the only one that is not ambiguous. Compositions 4 and 6 have the highest RUS and are the ones RUF 2.0 asks to review first.</span></aside>
+  </section>
+
+  <!-- RUF 2.0 · d -->
+  <section class="slide" data-section="RUF 2.0">
+    <div class="head">
+      <p class="eyebrow"><span class="lg-pt">RUF 2.0 · os três modos de falha, revistos</span><span class="lg-en">RUF 2.0 · the three failure modes, revisited</span></p>
+      <h2 class="h"><span class="lg-pt">O que o RUF 2.0 apanha, e o que continua no investigador</span><span class="lg-en">What RUF 2.0 catches, and what still rests with the researcher</span></h2>
+    </div>
+    <div class="lab-cards">
+      <div class="mode" data-f="1">
+        <div class="mh"><b><span class="lg-pt">Hesitação</span><span class="lg-en">Hesitation</span></b><span class="state good"><span class="lg-pt">Detetada</span><span class="lg-en">Detected</span></span></div>
+        <p class="mono xs"><span class="lg-pt">C3 · disciplina 29,8% = punição 29,8%<br>Δ = 0,00 · RUS 0,764</span><span class="lg-en">C3 · discipline 29.8% = punishment 29.8%<br>Δ = 0.00 · RUS 0.764</span></p>
+        <p class="outcome"><span class="lg-pt">Marcada como ambígua. O RUF-2 mantém as duas categorias «sem desempate definitivo».</span><span class="lg-en">Flagged as ambiguous. RUF-2 keeps both categories “with no definitive tie-break”.</span></p>
+      </div>
+      <div class="mode" data-f="2">
+        <div class="mh"><b><span class="lg-pt">Confiança cega</span><span class="lg-en">Blind confidence</span></b><span class="state none"><span class="lg-pt">Sem alerta</span><span class="lg-en">No alert</span></span></div>
+        <p class="mono xs"><span class="lg-pt">C7 · punição 47,2% · disciplina 38,7%<br>Δ = 8,56 · entropia 0,533 · RUS 0,579</span><span class="lg-en">C7 · punishment 47.2% · discipline 38.7%<br>Δ = 8.56 · entropy 0.533 · RUS 0.579</span></p>
+        <p class="outcome"><span class="lg-pt">Não ambígua, RUF-2 não ativado; S = 0 «por convenção operacional, não por estabilidade comprovada». Só a pergunta reflexiva a reabre:</span><span class="lg-en">Not ambiguous, RUF-2 not triggered; S = 0 “by operational convention, not by proven stability”. Only the reflexive question reopens it:</span></p>
+        <p class="voice small"><span class="lg-pt">«Como interpretar o afastamento dos alunos com dificuldades face ao ideal de apoio educativo?»</span><span class="lg-en">“How should we read the exclusion of struggling students against the ideal of educational support?”</span></p>
+      </div>
+      <div class="mode" data-f="3">
+        <div class="mh"><b><span class="lg-pt">Silêncio</span><span class="lg-en">Silence</span></b><span class="state noise"><span class="lg-pt">Memo</span><span class="lg-en">Memo</span></span></div>
+        <p class="outcome"><span class="lg-pt">As ausências (escuta emocional, inclusão, autonomia dos alunos) ficam registadas «como memo, não como código automaticamente atribuído».</span><span class="lg-en">Absences (emotional listening, inclusion, student autonomy) are recorded “as a memo, not as an automatically assigned code”.</span></p>
+        <p class="outcome"><span class="lg-pt">A avaliação, quase ausente, passou a categoria própria (C08), sustentada por duas composições (C5 e C6).</span><span class="lg-en">Assessment, almost absent, became a category of its own (C08), supported by two compositions (C5 and C6).</span></p>
+      </div>
+    </div>
+    <p class="lead" data-f="4"><span class="lg-pt">O RUF 2.0 resolve a hesitação por desenho. A confiança cega e o silêncio continuam a depender de quem lê.</span><span class="lg-en">RUF 2.0 solves hesitation by design. Blind confidence and silence still depend on whoever reads.</span></p>
+    <aside class="notes"><span class="lg-pt">Fecho da passagem. → revela os três modos pela ordem do quadro anterior. A segunda carta é o argumento: o índice mais baixo do corpus é o da composição mais problemática. Daqui segue-se diretamente para «A permanência humana é uma exigência epistemológica».</span><span class="lg-en">End of the transition. → reveals the three modes in the order of the earlier table. The second card is the argument: the lowest index in the corpus belongs to the most problematic composition. From here go straight to “Keeping the human in the loop is an epistemological requirement”.</span></aside>
+  </section>
+
   <!-- 22 -->
   <section class="slide" data-section="O limiar">
     <div class="cols grow" style="align-items:start">
@@ -900,9 +1082,10 @@ table.t.big td{padding:16px}
         <p class="tsub">Da Utilização de Ferramentas à Colaboração Humano–IA</p>
         <p class="author">António Pedro Costa<span>apcosta@fpce.up.pt · CIIE – FPCEUP</span></p>
       </div>
-      <div class="qpair">
+      <div class="qpair three">
         <figure><div class="qrbox" data-qr-url="https://doi.org/10.1177/16094069251383739" role="img" aria-label="Código QR do artigo AbductivAI"></div><figcaption>AbductivAI<br>IJQM, 2025</figcaption></figure>
         <figure><div class="qrbox" data-qr-url="https://qr.codes/KDXG3m" role="img" aria-label="Código QR do artigo RUF"></div><figcaption>RUF<br>edu4AI · ECAI 2025</figcaption></figure>
+        <figure><div class="qrbox" data-qr-url="https://chatgpt.com/g/g-69322a0d399881918639969107de0d09-ruf-2-0" role="img" aria-label="QR RUF 2.0"></div><figcaption>RUF 2.0<br>ChatGPT</figcaption></figure>
       </div>
     </div>
   </section>
@@ -962,7 +1145,7 @@ const tr = o => (o && typeof o === 'object') ? (LANG === 'en' ? o.en : o.pt) : o
 // conteúdo gerado: as duas línguas ficam no DOM e o CSS mostra a ativa
 function duo(pt, en) { const f = document.createDocumentFragment(); f.append(el('span', 'lg-pt', pt), el('span', 'lg-en', en)); return f; }
 function dual(tag, cls, pt, en) { const e = el(tag, cls); e.append(duo(pt, en)); return e; }
-const SECTIONS = {'Abertura':'Opening','Ponto de partida':'Starting point','AbductivAI':'AbductivAI','Da conversa ao agente':'From chat to agent','RUF':'RUF','O limiar':'The threshold','Fecho':'Closing'};
+const SECTIONS = {'Abertura':'Opening','Ponto de partida':'Starting point','AbductivAI':'AbductivAI','Da conversa ao agente':'From chat to agent','RUF':'RUF','O limiar':'The threshold','RUF 2.0':'RUF 2.0','Fecho':'Closing'};
 const norm = s => s.replace(/\s+/g, ' ').trim();
 const i18nNodes = [], i18nAttrs = [];
 function collectI18n(root) {
@@ -1442,7 +1625,9 @@ function render(opts = {}) {
   const sec = s.dataset.section || '';
   $('#secLabel').textContent = LANG === 'en' ? (SECTIONS[sec] || sec) : sec;
   $('#progress i').style.width = (100 * (S.i + 1) / slides.length) + '%';
-  const nt = $('.notes', s); $('#notesBody').textContent = nt ? nt.textContent : T('Sem notas para este diapositivo.', 'No notes for this slide.');
+  const nt = $('.notes', s); let ntxt = T('Sem notas para este diapositivo.', 'No notes for this slide.');
+  if (nt) { const part = $(LANG === 'en' ? '.lg-en' : '.lg-pt', nt); ntxt = (part || nt).textContent; }
+  $('#notesBody').textContent = ntxt;
   if (!opts.noHash) setHash('#s' + (S.i + 1));
   if (s.id === 'abSlide') requestAnimationFrame(drawLoops);
   if (!opts.remote) emitSlide();
@@ -1563,6 +1748,131 @@ $('#lim').addEventListener('input', labUpdate);
 $('#limReset').addEventListener('click', () => { $('#lim').value = 40; labUpdate(); });
 $('#rufOn').addEventListener('change', e => $('#lab').classList.toggle('ruf-on', e.target.checked));
 
+/* ================= RUF 2.0 ================= */
+const CAT2 = {
+  C01:{pt:'Preparação e clareza pedagógica', en:'Preparation and pedagogical clarity'},
+  C02:{pt:'Apoio às dificuldades de aprendizagem', en:'Support for learning difficulties'},
+  C03:{pt:'Exigência e orientação para a aprendizagem', en:'High expectations and learning orientation'},
+  C04:{pt:'Disciplina e regulação comportamental', en:'Discipline and behavioural regulation'},
+  C05:{pt:'Punição e autoridade coerciva', en:'Punishment and coercive authority'},
+  C06:{pt:'Flexibilidade pedagógica e respeito pelo ritmo', en:'Pedagogical flexibility and respect for pace'},
+  C07:{pt:'Ludicidade e motivação', en:'Playfulness and motivation'},
+  C08:{pt:'Avaliação e preparação para as provas', en:'Assessment and test preparation'},
+  C09:{pt:'Convivência, respeito e bem-estar coletivo', en:'Getting along, respect and collective well-being'},
+  C10:{pt:'Participação e cooperação na aprendizagem', en:'Participation and cooperation in learning'}
+};
+const RUF2 = [
+  {n:1, g:'M', t1:['C01',32.0], t2:['C03',25.2], d:6.84, h:0.723, amb:true, div:40, ins:true, rus:0.742,
+   ex:{pt:'Preparar bem as lições; ser exigente.', en:'Prepare lessons well; be demanding.'},
+   st:{pt:'A representação docente combina preparação pedagógica e exigência.', en:'The image of the teacher combines pedagogical preparation and high expectations.'},
+   q:{pt:'A exigência constitui uma dimensão independente da preparação?', en:'Are high expectations a dimension independent of preparation?'}},
+  {n:2, g:'M', t1:['C02',38.8], t2:['C06',24.0], d:14.77, h:0.690, amb:true, div:20, ins:false, rus:0.657,
+   ex:{pt:'Ajudar os alunos com dificuldades.', en:'Help students who struggle.'},
+   st:{pt:'O professor é representado como promotor de apoio e adaptação.', en:'The teacher is portrayed as a source of support and adaptation.'},
+   q:{pt:'Terminar cedo a aula representa flexibilidade ou recompensa?', en:'Does ending the class early mean flexibility or reward?'}},
+  {n:3, g:'F', t1:['C04',29.8], t2:['C05',29.8], d:0.00, h:0.710, amb:true, div:40, ins:true, rus:0.764,
+   ex:{pt:'Quem brincasse seria castigado; parar perante o cansaço.', en:'Anyone who played around would be punished; stop when they are tired.'},
+   st:{pt:'A autoridade disciplinar articula-se com sensibilidade ao cansaço.', en:'Disciplinary authority is combined with sensitivity to tiredness.'},
+   q:{pt:'A punição é um recurso instrumental ou o princípio organizador da autoridade?', en:'Is punishment an instrumental resource or the organising principle of authority?'}},
+  {n:4, g:'F', t1:['C10',22.8], t2:['C09',21.1], d:1.75, h:0.824, amb:true, div:40, ins:true, rus:0.802,
+   ex:{pt:'Dar oportunidade para perguntas; impedir agressões.', en:'Give the chance to ask questions; prevent fighting.'},
+   st:{pt:'A participação na aprendizagem é associada à regulação das relações sociais.', en:'Participation in learning is tied to regulating social relationships.'},
+   q:{pt:'A promoção do respeito ou a participação representa a dimensão mais central?', en:'Is promoting respect or participation the more central dimension?'}},
+  {n:5, g:'M', t1:['C07',38.0], t2:['C06',29.9], d:8.11, h:0.616, amb:true, div:40, ins:true, rus:0.694,
+   ex:{pt:'Aulas com jogos, filmes e menos provas.', en:'Classes with games, films and fewer tests.'},
+   st:{pt:'O bom professor organiza experiências de aprendizagem prazerosas.', en:'The good teacher organises enjoyable learning experiences.'},
+   q:{pt:'A ludicidade tem finalidade pedagógica ou representa sobretudo redução da exigência?', en:'Does playfulness have a pedagogical purpose or mainly mean lower demands?'}},
+  {n:6, g:'F', t1:['C10',20.3], t2:['C08',18.0], d:2.30, h:0.841, amb:true, div:40, ins:true, rus:0.807,
+   ex:{pt:'Revisões, aprendizagem com colegas e regras de respeito.', en:'Revision, learning with classmates and rules of respect.'},
+   st:{pt:'A aprendizagem é concebida como responsabilidade coletiva, articulada com avaliação e disciplina.', en:'Learning is seen as a collective responsibility, linked to assessment and discipline.'},
+   q:{pt:'A cooperação é uma estratégia de apoio ou uma dimensão autónoma da participação?', en:'Is cooperation a support strategy or an autonomous dimension of participation?'}},
+  {n:7, g:'F', t1:['C05',47.2], t2:['C04',38.7], d:8.56, h:0.533, amb:false, div:null, ins:null, rus:0.579,
+   ex:{pt:'Castigar desde início; afastar quem não aprende.', en:'Punish from the start; push aside those who don’t learn.'},
+   st:{pt:'A autoridade docente é concebida predominantemente através da coerção e da exclusão.', en:'Teacher authority is conceived mainly through coercion and exclusion.'},
+   q:{pt:'Como interpretar o afastamento dos alunos com dificuldades face ao ideal de apoio educativo?', en:'How should we read the exclusion of struggling students against the ideal of educational support?'}},
+  {n:8, g:'M', t1:['C02',33.0], t2:['C06',22.1], d:10.87, h:0.785, amb:true, div:40, ins:true, rus:0.751,
+   ex:{pt:'Compreender dificuldades; reservar momentos para brincar.', en:'Understand difficulties; set aside time to play.'},
+   st:{pt:'O professor procura compreender as dificuldades sem abandonar os limites de comportamento.', en:'The teacher seeks to understand difficulties without abandoning behavioural limits.'},
+   q:{pt:'O apoio individualizado deve prevalecer sobre a flexibilidade como categoria principal?', en:'Should individual support prevail over flexibility as the main category?'}},
+  {n:9, g:'F', t1:['C09',30.3], t2:['C07',28.0], d:2.33, h:0.755, amb:true, div:40, ins:true, rus:0.773,
+   ex:{pt:'Lições interessantes; amizade e bem-estar na escola.', en:'Interesting lessons; friendship and well-being at school.'},
+   st:{pt:'O bom professor promove simultaneamente aprendizagem, motivação e bem-estar social.', en:'The good teacher promotes learning, motivation and social well-being at the same time.'},
+   q:{pt:'O centro da representação é a convivência ou a motivação para aprender?', en:'Is the core of the representation getting along or motivation to learn?'}}
+];
+// presets tal como o RUF 2.0 os apresenta: [id, pt, en, limiar Δ (p.p.), limiar de entropia]
+const PRESETS = [['exp','Exploratório','Exploratory',6,0.55],['conf','Confirmatório','Confirmatory',7,0.65],['bal','Balanceado','Balanced',5,0.60],['crit','Crítico-reflexivo','Critical-reflexive',5,0.58],['aula','Aula / demonstração','Classroom / demo',5,0.65]];
+const WEAK_TOP1 = 35; // limiar de evidência fraca do teste (0,35)
+let preset = 0, rusSel = 2;
+const fmt = (x, d) => { const s = Number(x).toFixed(d); return LANG === 'en' ? s : s.replace('.', ','); };
+const statePill = (cls, pt, en) => el('span', 'state ' + cls, T(pt, en));
+function buildPresets() {
+  const box = $('#presets');
+  PRESETS.forEach((p, k) => { const b = el('button', 'chip'); b.type = 'button'; b.dataset.preset = k; b.append(duo(p[1], p[2])); b.addEventListener('click', () => { preset = k; calcUpdate(); }); box.append(b); });
+  $$('#calc input[type=range]').forEach(i => i.addEventListener('input', calcUpdate));
+  $$('#calc [data-ex]').forEach(b => b.addEventListener('click', () => {
+    const r = RUF2.find(x => x.n === +b.dataset.ex);
+    preset = 0; $('#cDelta').value = r.d; $('#cH').value = r.h; $('#cS').value = r.div === null ? 0 : r.div / 100; $('#cTop').value = r.t1[1];
+    calcUpdate();
+  }));
+}
+function calcUpdate() {
+  const P = PRESETS[preset];
+  $$('#presets [data-preset]').forEach(b => b.setAttribute('aria-pressed', +b.dataset.preset === preset ? 'true' : 'false'));
+  const d = +$('#cDelta').value, h = +$('#cH').value, s = +$('#cS').value, top = +$('#cTop').value;
+  $('#oDelta').textContent = fmt(d, 2) + ' p.p.'; $('#oH').textContent = fmt(h, 3); $('#oS').textContent = Math.round(s * 5) + '/5'; $('#oTop').textContent = fmt(top, 1) + '%';
+  const amb = d <= P[3] || h >= P[4];
+  const weak = top < WEAK_TOP1;
+  const ruf2 = amb || weak;
+  const sEff = ruf2 ? s : 0;
+  const C = 1 - d / 100;
+  const rus = 0.4 * h + 0.4 * C + 0.2 * sEff;
+  $('#rusVal').textContent = fmt(rus, 3);
+  $('#rusFormula').textContent = fmt(0.4, 2) + ' × D ' + fmt(h, 3) + '  +  ' + fmt(0.4, 2) + ' × C ' + fmt(C, 3) + '  +  ' + fmt(0.2, 2) + ' × S ' + fmt(sEff, 2) + '   (C = 1 − Δ/100)';
+  const va = $('#vAmb'); va.textContent = '';
+  va.append(amb ? statePill('noise', 'Ambígua', 'Ambiguous') : statePill('none', 'Não ambígua', 'Not ambiguous'),
+    el('span', null, T('Regra do preset: Δ ≤ ' + P[3] + ' p.p. ou entropia ≥ ' + fmt(P[4], 2), 'Preset rule: Δ ≤ ' + P[3] + ' p.p. or entropy ≥ ' + fmt(P[4], 2))));
+  const vr = $('#vRuf2'); vr.textContent = '';
+  vr.append(ruf2 ? statePill('good', 'RUF-2 ativado', 'RUF-2 triggered') : statePill('none', 'RUF-2 não ativado', 'RUF-2 not triggered'),
+    el('span', null, ruf2 ? (amb ? T('por ambiguidade: seguem-se justificações contrastivas e teste de estabilidade', 'by ambiguity: contrastive justifications and a stability test follow') : T('por evidência fraca: top-1 abaixo de 35%', 'by weak evidence: top-1 below 35%'))
+                           : T('nenhum limiar disparou e o top-1 está acima de 35%', 'no threshold fired and top-1 is above 35%')));
+  $('#calcNote').textContent = (!ruf2 && s > 0)
+    ? T('Sem RUF-2, o S conta como 0 por convenção operacional: a instabilidade nem chega a ser testada.', 'Without RUF-2, S counts as 0 by operational convention: instability is never even tested.')
+    : T('Pesos do índice: difusão D 0,40 · proximidade C 0,40 · instabilidade S 0,20. Limiar de evidência fraca: 0,35 (valor do teste).', 'Index weights: diffusion D 0.40 · closeness C 0.40 · instability S 0.20. Weak-evidence threshold: 0.35 (value used in the test).');
+}
+function buildRus() {
+  const ch = $('#rusChart'); ch.textContent = '';
+  const plot = el('div', 'rus-plot');
+  [0, 0.25, 0.5, 0.75, 1].forEach(v => { const g = el('div', 'rus-grid'); g.style.bottom = (v * 100) + '%'; const sp = el('span'); sp.dataset.v = v; g.append(sp); plot.append(g); });
+  const cols = el('div', 'rus-cols');
+  RUF2.forEach((r, k) => {
+    const b = el('button', 'rbar' + (r.amb ? '' : ' calm')); b.type = 'button'; b.style.setProperty('--v', r.rus); b.dataset.k = k;
+    b.append(el('span', 'v'));
+    b.addEventListener('click', () => { rusSel = k; renderRus(); });
+    cols.append(b);
+  });
+  plot.append(cols); ch.append(plot);
+  const x = el('div', 'rus-x');
+  RUF2.forEach(r => { const d = el('div'); d.append(el('b', null, 'C' + r.n), el('span', null, r.g)); x.append(d); });
+  ch.append(x);
+}
+function renderRus() {
+  $$('#rusChart .rus-grid span').forEach(s => { s.textContent = fmt(+s.dataset.v, 2); });
+  $$('#rusChart .rbar').forEach((b, k) => { const r = RUF2[k]; b.setAttribute('aria-pressed', k === rusSel ? 'true' : 'false'); $('.v', b).textContent = fmt(r.rus, 3); b.setAttribute('aria-label', 'C' + r.n + ' · RUS ' + fmt(r.rus, 3)); });
+  $$('.rus-mean').forEach(e => { e.textContent = fmt(0.730, 3); });
+  const r = RUF2[rusSel], d = $('#rusDetail'); if (!d) return; d.textContent = '';
+  d.append(el('p', 'eyebrow', T('Composição C', 'Composition C') + r.n + ' · ' + tr(G[r.g])), el('p', 'dn', tr(r.ex)));
+  [r.t1, r.t2].forEach(([c, v]) => { const row = el('div', 'tc'); row.append(el('span', null, c + ' · ' + tr(CAT2[c])), el('span', 'mono', fmt(v, 1) + '%')); const trk = el('span', 'tr'); const i = el('i'); i.style.setProperty('--v', v); trk.append(i); row.append(trk); d.append(row); });
+  const kv = el('div', 'kv');
+  const cell = (k, v) => { const c = el('div'); c.append(el('small', null, k), el('b', null, v)); kv.append(c); };
+  cell('Δ', fmt(r.d, 2)); cell(T('Entropia', 'Entropy'), fmt(r.h, 3)); cell(T('Ambígua', 'Ambiguous'), r.amb ? T('sim', 'yes') : T('não', 'no'));
+  cell(T('Instável', 'Unstable'), r.ins === null ? T('não testada', 'not tested') : (r.ins ? T('sim', 'yes') : T('não', 'no')) + ' · ' + r.div + '%');
+  cell('RUS', fmt(r.rus, 3));
+  d.append(kv);
+  const b1 = el('div', 'blk ai'); b1.append(el('h4', null, T('Afirmação reflexiva (RUF-3)', 'Reflexive statement (RUF-3)')), el('p', 'llm', tr(r.st)));
+  const b2 = el('div', 'blk hu'); b2.append(el('h4', null, T('Pergunta reflexiva para o investigador', 'Reflexive question for the researcher')), el('p', 'rc', tr(r.q)));
+  d.append(b1, b2);
+}
+
 /* ================= língua ================= */
 function setLang(l, save) {
   LANG = l === 'en' ? 'en' : 'pt';
@@ -1572,7 +1882,7 @@ function setLang(l, save) {
   i18nAttrs.forEach(n => n.el.setAttribute(n.a, LANG === 'en' ? n.en : n.pt));
   if (save) store.set('lang', LANG);
   $$('[data-act="lang"]').forEach(b => { b.textContent = LANG === 'en' ? 'PT' : 'EN'; const a = LANG === 'en' ? 'Mudar para português' : 'Switch to English'; b.setAttribute('aria-label', a); b.title = a + ' (E)'; });
-  buildRufTable(); modeLabels(); refreshPolls(); labUpdate(); renderAb(); loopLabel(); revealBtns.forEach(f => f()); qrNote(); drawAllQR();
+  buildRufTable(); modeLabels(); refreshPolls(); labUpdate(); renderAb(); loopLabel(); revealBtns.forEach(f => f()); calcUpdate(); renderRus(); qrNote(); drawAllQR();
   render({noHash:true});
 }
 
@@ -1629,7 +1939,7 @@ addEventListener('hashchange', () => {
 
 /* ================= arranque ================= */
 collectI18n(app);
-buildCorpus(); buildCases(); buildPhases(); buildDefaultOpts();
+buildCorpus(); buildCases(); buildPhases(); buildDefaultOpts(); buildPresets(); buildRus();
 const h0 = location.hash;
 const lang0 = /^#(pt|en)$/.exec(h0);
 if (lang0) store.set('lang', lang0[1]);
