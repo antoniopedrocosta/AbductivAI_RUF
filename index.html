@@ -333,6 +333,8 @@ mark{background:color-mix(in srgb,var(--orchid) 22%,transparent);color:inherit;p
 .comp header{display:flex;justify-content:space-between;font:600 var(--xs) var(--machine);color:var(--muted)}
 .comp p{font:italic 16.5px/1.38 var(--voice)}
 .read .comp p{font-size:15px}
+.present #app[data-lang="en"] .comp p,#app.present[data-lang="en"] .comp p{font-size:15px;line-height:1.34}
+#app.present[data-lang="en"] .corpus{gap:10px}
 
 .ctabs{display:flex;gap:8px;flex-wrap:wrap}
 .ctabs .chip{font-size:var(--xs)}
@@ -423,6 +425,8 @@ table.t.big td{padding:16px}
 .qpair figcaption{font-size:var(--xs);color:var(--muted);text-align:center;line-height:1.35}
 .read .qpair figure{width:140px}
 
+#app[data-lang="en"] .lg-pt,#app:not([data-lang="en"]) .lg-en{display:none!important}
+#hud .lang-btn{font:700 12px var(--sans);letter-spacing:.04em}
 @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 </style>
 
@@ -434,6 +438,7 @@ table.t.big td{padding:16px}
     <span class="tb-r">
       <span class="pill" data-livepill>Respostas locais</span>
       <button class="btn follow" id="followRead" type="button"></button>
+      <button class="btn" type="button" data-act="lang">EN</button>
       <button class="btn" type="button" data-act="qr">QR</button>
       <button class="btn" type="button" data-act="mode">Diapositivos</button>
     </span>
@@ -476,7 +481,7 @@ table.t.big td{padding:16px}
       <button type="button" class="stage" data-poll-for="fases" data-opt="dissem" style="--c:var(--st7)"><span class="fill"></span><span class="cnt"></span><span class="st-name">Disseminação</span></button>
     </div>
     <div class="stfoot">
-      <button type="button" class="chip" data-poll-for="fases" data-opt="nenhuma">Ainda em nenhuma <span class="cnt"></span></button>
+      <button type="button" class="chip" data-poll-for="fases" data-opt="nenhuma"><span>Ainda em nenhuma</span> <span class="cnt"></span></button>
       <p class="meta" data-meta="fases"></p>
     </div>
     <aside class="notes">Como usar: os alunos tocam nas fases no telemóvel; com respostas ao vivo, cada bloco enche à medida que respondem. Sem ligação ao vivo, cliquem num bloco por cada braço no ar.</aside>
@@ -506,7 +511,7 @@ table.t.big td{padding:16px}
         <p class="ptitle">AI as a Co-researcher in the Qualitative Research Workflow: Transforming Human-AI Collaboration</p>
         <p class="authors">António Pedro Costa, Grzegorz Bryda, Prokopis A. Christou e Judita Kasperiuniene</p>
         <p class="pmeta">DOI 10.1177/16094069251383739</p>
-        <p class="pabs" style="margin-bottom:18px">Propõe o <b>AbductivAI</b>, um modelo abdutivo para analisar dados qualitativos em colaboração entre humanos e agentes de IA. A IA deixa de ser só ferramenta e passa a coinvestigadora, desde que o humano assuma o papel de agente reflexivo responsável por todo o processo.</p>
+        <p class="pabs" style="margin-bottom:18px">Propõe o <b>AbductivAI</b>, um modelo abdutivo para analisar dados qualitativos em colaboração entre humanos e agentes de IA. A IA deixa de ser só ferramenta e passa a co-investigadora, desde que o humano assuma o papel de agente reflexivo responsável por todo o processo.</p>
         <div class="triad"><span>IA agêntica</span><span>Teoria do ator-rede</span><span>Sociomaterialidade</span><span>IA generativa</span></div>
       </div>
       <div class="qside">
@@ -611,9 +616,9 @@ table.t.big td{padding:16px}
         <div class="stairs" data-poll="papel">
           <button type="button" class="lvl" data-poll-for="papel" data-opt="assist"><span class="fill"></span><span class="cnt"></span><b>IA como assistente</b><small>transcrição, codificação automática, organização de dados</small></button>
           <button type="button" class="lvl" data-poll-for="papel" data-opt="colab"><span class="fill"></span><span class="cnt"></span><b>IA como colaborador semi-autónomo</b><small>identifica padrões, sugere temas</small></button>
-          <button type="button" class="lvl" data-poll-for="papel" data-opt="copesq"><span class="fill"></span><span class="cnt"></span><b>IA como co-pesquisador reflexivo</b><small>colaboração na interpretação e geração de conhecimentos</small></button>
+          <button type="button" class="lvl" data-poll-for="papel" data-opt="copesq"><span class="fill"></span><span class="cnt"></span><b>IA como co-investigador reflexivo</b><small>colaboração na interpretação e geração de conhecimentos</small></button>
         </div>
-        <div class="stfoot"><button type="button" class="chip" data-poll-for="papel" data-opt="nao">Ainda não uso IA <span class="cnt"></span></button><p class="meta" data-meta="papel"></p></div>
+        <div class="stfoot"><button type="button" class="chip" data-poll-for="papel" data-opt="nao"><span>Ainda não uso IA</span> <span class="cnt"></span></button><p class="meta" data-meta="papel"></p></div>
       </div>
       <div class="theory">
         <p class="sub-h">Fundamentos teóricos</p>
@@ -805,7 +810,7 @@ table.t.big td{padding:16px}
         <input type="range" id="lim" min="0" max="100" step="1" value="40" aria-describedby="limOut">
         <output id="limOut" for="lim">40%</output>
         <button type="button" class="chip" id="limReset">Pattyn (2024): 40%</button>
-        <label class="tog"><input type="checkbox" id="rufOn"> Mostrar o que o RUF assinalaria</label>
+        <label class="tog"><input type="checkbox" id="rufOn"> <span>Mostrar o que o RUF assinalaria</span></label>
       </div>
       <div class="lab-cards">
         <div class="mode" data-mode="hes">
@@ -911,6 +916,7 @@ table.t.big td{padding:16px}
     <button type="button" data-act="next" title="Seguinte (→)" aria-label="Seguinte"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
     <button type="button" data-act="qr" title="Código QR (Q)" aria-label="Mostrar código QR"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3zM20 14v.01M14 20h.01M17 20h4v-3"/></svg></button>
     <button type="button" data-act="notes" title="Notas (N)" aria-label="Notas do apresentador" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="M5 4h14v16H5zM8 8h8M8 12h8M8 16h5"/></svg></button>
+    <button type="button" data-act="lang" class="lang-btn" title="Switch to English (E)" aria-label="Switch to English">EN</button>
     <button type="button" data-act="mode" title="Modo leitura (L)" aria-label="Mudar para modo leitura"><svg viewBox="0 0 24 24"><path d="M4 5h16M4 10h16M4 15h10M4 20h7"/></svg></button>
     <button type="button" data-act="fs" title="Ecrã inteiro (F)" aria-label="Ecrã inteiro"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
   </nav>
@@ -924,7 +930,7 @@ table.t.big td{padding:16px}
       <p class="url" id="joinUrl"></p>
       <p class="meta" style="justify-content:center"><span class="pill" data-livepill>Respostas locais</span></p>
       <div class="row"><button class="btn" type="button" id="copyUrl">Copiar ligação</button><button class="btn primary" type="button" data-act="qrclose">Fechar</button></div>
-      <p class="note">As respostas aparecem ao vivo no ecrã para quem abrir a aula com sessão iniciada no Claude e acesso a esta página. Sem isso, cada pessoa responde no seu dispositivo e o professor conta à mão.</p>
+      <p class="note" id="qrNote"></p>
       <details><summary>Alterar a ligação do código QR</summary><form id="urlForm"><input id="urlInput" type="url" placeholder="https://…" aria-label="Nova ligação"><button class="btn" type="submit">Guardar</button></form></details>
     </div>
   </div>
@@ -935,92 +941,167 @@ table.t.big td{padding:16px}
 (() => {
 'use strict';
 const SHARE_URL = 'https://claude.ai/artifact/5yzYpdyisiHgAxFoNhARGd';
+const I18N_DATA = {"I18N": {"IA e Investigação Qualitativa": "AI and Qualitative Research", "Aula 9": "Session 9", "Investigação Qualitativa na Era da Inteligência Artificial": "Qualitative Research in the Age of Artificial Intelligence", "Da Utilização de Ferramentas à Colaboração Humano–IA": "From Using Tools to Human–AI Collaboration", "Abram a aula no telemóvel": "Open the session on your phone", "para responder às perguntas e explorar os modelos": "to answer the questions and explore the models", "Ponto de partida": "Starting point", "O processo de investigação": "The research process", "Toquem nas fases em que já usaram IA. Hoje focamo-nos na análise de dados e nos resultados.": "Tap the stages where you have already used AI. Today we focus on data analysis and results.", "Problema": "Problem", "questão de investigação e objetivos": "research question and aims", "Revisão da Literatura": "Literature Review", "fundamentação teórica": "theoretical framework", "Desenho da Investigação": "Research Design", "metodologia": "methodology", "Recolha de Dados": "Data Collection", "Foco da aula": "Today's focus", "Análise de Dados": "Data Analysis", "Resultados": "Results", "Disseminação": "Dissemination", "Como usar: os alunos tocam nas fases no telemóvel; com respostas ao vivo, cada bloco enche à medida que respondem. Sem ligação ao vivo, cliquem num bloco por cada braço no ar.": "How to use: students tap the stages on their phones; with live responses, each block fills as they answer. Without a live connection, click a block once for each raised hand.", "Pergunta": "Question", "Quando dois investigadores discordam quanto à codificação, a IA pode ajudar a explorar alternativas, em vez de “impor” uma decisão?": "When two researchers disagree on coding, can AI help explore alternatives instead of “imposing” a decision?", "Colaboração humano–IA": "Human–AI collaboration", "International Journal of Qualitative Methods · vol. 24 · 2025 · acesso aberto": "International Journal of Qualitative Methods · vol. 24 · 2025 · open access", "António Pedro Costa, Grzegorz Bryda, Prokopis A. Christou e Judita Kasperiuniene": "António Pedro Costa, Grzegorz Bryda, Prokopis A. Christou and Judita Kasperiuniene", "Propõe o <b>AbductivAI<\/b>, um modelo abdutivo para analisar dados qualitativos em colaboração entre humanos e agentes de IA. A IA deixa de ser só ferramenta e passa a co-investigadora, desde que o humano assuma o papel de agente reflexivo responsável por todo o processo.": "Proposes <b>AbductivAI<\/b>, an abductive model for analysing qualitative data through collaboration between humans and AI agents. AI stops being just a tool and becomes a co-researcher, provided the human takes on the role of reflexive agent responsible for the whole process.", "IA agêntica": "Agentic AI", "Teoria do ator-rede": "Actor-Network Theory", "Sociomaterialidade": "Sociomateriality", "IA generativa": "Generative AI", "Ler o artigo": "Read the paper", "Da conversa ao agente · 1 de 3": "From chat to agent · 1 of 3", "Eu ⇄ GenAI: cada passo passa por mim": "Me ⇄ GenAI: every step goes through me", "Eu": "Me", "Proponha categorias para esta entrevista!": "Suggest categories for this interview!", "Gera categorias": "Generates categories", "Mas apenas com o uso de IA": "But only with the use of AI", "Saltar as categorias sem utilização de IA": "Skip the categories without AI use", "O investigador conduz cada troca. A IA responde, mas cada novo passo depende de um novo pedido.": "The researcher drives every exchange. The AI responds, but each new step depends on a new request.", "Passo seguinte": "Next step", "Recomeçar": "Start again", "Da conversa ao agente · 2 de 3": "From chat to agent · 2 of 3", "GenAI ⇄ Computador: a IA começa a agir": "GenAI ⇄ Computer: the AI starts to act", "Computador": "Computer", "Propõe categorias para esta entrevista!": "Suggest categories for this interview!", "Lista de possíveis categorias ou temas": "List of possible categories or themes", "Propor novas categorias": "Propose new categories", "Adicionar novas categorias": "Add new categories", "A IA passa a escrever no computador, e o computador volta a pedir-lhe propostas. O investigador só entra no início.": "The AI now writes to the computer, and the computer asks it for more proposals. The researcher only steps in at the start.", "Da conversa ao agente · 3 de 3": "From chat to agent · 3 of 3", "Agentes em ciclo: prompt › resposta › ação": "Agents in a loop: prompt › response › action", "Humano": "Human", "IA": "AI", "Tarefa": "Task", "Ciclo dos agentes": "Agent loop", "Prompt › Resposta › Ação": "Prompt › Response › Action", "Obter feedback sobre o resultado": "Get feedback on the result", "Retornar resultado": "Return result", "Construção do prompt <span class=\"who\">IA<\/span>": "Build the prompt <span class=\"who\">AI<\/span>", "Gerar resposta <span class=\"who\">IA<\/span>": "Generate a response <span class=\"who\">AI<\/span>", "Análise das respostas <span class=\"who\">IA<\/span>": "Analyse the responses <span class=\"who\">AI<\/span>", "Executar ação <span class=\"who\">Computador<\/span>": "Execute the action <span class=\"who\">Computer<\/span>", "Converter o resultado em string <span class=\"who\">Computador<\/span>": "Convert the result to a string <span class=\"who\">Computer<\/span>", "Continuar o loop? <span class=\"who\">decisão<\/span>": "Continue the loop? <span class=\"who\">decision<\/span>", "Como usar: → revela as mensagens do diagrama. «Correr um ciclo» percorre os seis passos; à terceira iteração o agente pára e devolve o resultado ao humano.": "How to use: → reveals the diagram's messages. “Run a cycle” goes through the six steps; on the third iteration the agent stops and returns the result to the human.", "Evolução do papel da IA na investigação qualitativa": "How the role of AI in qualitative research is evolving", "De ferramenta a colaborador": "From tool to collaborator", "E vocês? Toquem no papel que a IA tem (ou teria) no vosso trabalho.": "What about you? Tap the role AI plays (or would play) in your work.", "IA como assistente": "AI as assistant", "transcrição, codificação automática, organização de dados": "transcription, automatic coding, data organisation", "IA como colaborador semi-autónomo": "AI as semi-autonomous collaborator", "identifica padrões, sugere temas": "identifies patterns, suggests themes", "IA como co-investigador reflexivo": "AI as reflexive co-researcher", "colaboração na interpretação e geração de conhecimentos": "collaborates in interpretation and knowledge generation", "Fundamentos teóricos": "Theoretical foundations", "Bases epistemológicas para o papel da IA": "Epistemological grounds for the role of AI", "Teoria do ator-rede (ANT)": "Actor-Network Theory (ANT)", "Os atores humanos e não humanos constroem o conhecimento em redes.": "Human and non-human actors build knowledge in networks.", "O social e o material (IA) são inseparáveis na produção de conhecimento.": "The social and the material (AI) are inseparable in the production of knowledge.", "Modelo de colaboração humano–IA para análise qualitativa": "A human–AI collaboration model for qualitative analysis", "Modelo AbductivAI": "The AbductivAI model", "Combina raciocínio dedutivo, indutivo e abdutivo": "Combines deductive, inductive and abductive reasoning", "Baseado na codificação colaborativa (humanos + agentes de IA)": "Based on collaborative coding (humans + AI agents)", "8 fases iterativas com validação cruzada": "8 iterative phases with cross-validation", "Dedutivo · parte da teoria": "Deductive · starts from theory", "Indutivo · parte dos dados": "Inductive · starts from data", "Abdutivo · salto interpretativo": "Abductive · interpretive leap", "A abdução não é uma síntese de indução e dedução: é uma inferência criativa que gera compreensões plausíveis e mais profundas (Reichertz, 2007; Tavory &amp; Timmermans, 2014).": "Abduction is not a synthesis of induction and deduction: it is a creative inference that generates plausible, deeper understandings (Reichertz, 2007; Tavory &amp; Timmermans, 2014).", "resumos do WCQR 2025 usados para testar o modelo": "WCQR 2025 abstracts used to test the model", "humanos e agentes: a configuração ideal": "humans and agents: the ideal set-up", "Mayring, P. (2014). <i>Qualitative content analysis: Theoretical foundation, basic procedures and software solution.<\/i> <a href=\"https://nbn-resolving.org/urn:nbn:de:0168-ssoar-395173\" target=\"_blank\" rel=\"noopener\">SSOAR<\/a><br>Costa, A. P., &amp; Amado, J. (2018). <i>Content analysis supported by software<\/i> (2.ª ed.). Ludomedia.": "Mayring, P. (2014). <i>Qualitative content analysis: Theoretical foundation, basic procedures and software solution.<\/i> <a href=\"https://nbn-resolving.org/urn:nbn:de:0168-ssoar-395173\" target=\"_blank\" rel=\"noopener\">SSOAR<\/a><br>Costa, A. P., &amp; Amado, J. (2018). <i>Content analysis supported by software<\/i> (2nd ed.). Ludomedia.", "Explorem as fases · humanos e agentes": "Explore the phases · humans and agents", "Como usar: cliquem numa fase para ver o que fazem humanos e agentes. As setas tracejadas são as iterações do modelo (4→2, 6→5, 8→1); cliquem numa delas para a destacar. A fase 5.5 é onde entra o RUF.": "How to use: click a phase to see what humans and agents do. The dashed arrows are the model's iterations (4→2, 6→5, 8→1); click one to highlight it. Phase 5.5 is where the RUF comes in.", "Considerações éticas": "Ethical considerations", "<b>Transparência:<\/b> documentar as contribuições da IA": "<b>Transparency:<\/b> document AI's contributions", "Validação cruzada com contributos humanos": "Cross-validation with human input", "<b>Responsabilidade pelo julgamento final:<\/b> o investigador humano": "<b>Responsibility for the final judgement:<\/b> the human researcher", "Reflexões finais": "Final reflections", "Para onde nos dirigimos?": "Where are we heading?", "A IA não substitui o investigador: aumenta as suas capacidades.": "AI does not replace the researcher: it extends their capabilities.", "Importância da reflexividade e da interpretação humana.": "The importance of reflexivity and human interpretation.", "Surgem novas possibilidades de investigação e de rigor qualitativo.": "New possibilities for research and qualitative rigour are emerging.", "Pergunta · respondam no telemóvel": "Question · answer on your phone", "Como é que conseguimos equilibrar a confiança nos algoritmos com a nossa interpretação crítica?": "How can we balance trust in algorithms with our own critical interpretation?", "Enviar": "Send", "O terceiro modelo é o RUF – Reflexive Uncertainty Framework. Ele serve para lidar com a incerteza, algo muito presente na análise qualitativa. A ideia é manter o investigador sempre reflexivo: questionar resultados, reavaliar interpretações, evitar a confiança cega no algoritmo. Pergunta rápida: Como equilibrar a confiança na máquina com a nossa interpretação crítica? Este é o coração do RUF.": "The third model is the RUF – Reflexive Uncertainty Framework. It is designed to deal with uncertainty, which is very present in qualitative analysis. The idea is to keep the researcher reflexive at all times: questioning results, reassessing interpretations, avoiding blind trust in the algorithm. Quick question: how do we balance trust in the machine with our critical interpretation? This is the heart of the RUF.", "edu4AI 2025 · 2.º Workshop on Education for Artificial Intelligence · ECAI 2025, Bolonha": "edu4AI 2025 · 2nd Workshop on Education for Artificial Intelligence · ECAI 2025, Bologna", "António Pedro Costa e Pedro Bem-Haja": "António Pedro Costa and Pedro Bem-Haja", "Propõe o <b>RUF<\/b> como extensão metodológica da coanálise humano–IA que trata a incerteza <b>não como erro, mas como evidência analiticamente produtiva<\/b>. Os resultados foram triangulados com análise qualitativa tradicional no webQDA e com o ChatGPT; o modelo computacional está a ser implementado no Google Colab.": "Proposes the <b>RUF<\/b> as a methodological extension of human–AI co-analysis that treats uncertainty <b>not as error but as analytically productive evidence<\/b>. The results were triangulated with traditional qualitative analysis in webQDA and with ChatGPT; the computational model is being implemented in Google Colab.", "Três momentos documentados": "Three documented moments", "1 · Classificação probabilística": "1 · Probabilistic classification", "2 · Zonas de ambiguidade interpretativa": "2 · Zones of interpretive ambiguity", "3 · Comentário reflexivo": "3 · Reflexive commentary", "Aprofundamento da fase 5.5 do AbductivAI": "Deepening phase 5.5 of AbductivAI", "Quadro de Incerteza Reflexiva (RUF)": "Reflexive Uncertainty Framework (RUF)", "Recurso RUF": "RUF resource", "1 · Resultados da classificação probabilística": "1 · Probabilistic classification outputs", "Um modelo vetorial transforma segmentos e categorias em vetores, calcula a similaridade do cosseno e aplica softmax para obter probabilidades.": "A vector model turns segments and categories into vectors, computes cosine similarity and applies softmax to obtain probabilities.", "Modelo vetorial: embeddings + similaridade do cosseno + softmax; prompting reflexivo do LLM para justificar": "Vector model: embeddings + cosine similarity + softmax; reflective LLM prompting for justification", "Pontuações muito próximas, ou baixas e difusas, ativam uma segunda camada: o LLM tem de justificar. Se a justificação oscila, essa instabilidade é dado.": "Very close scores, or low and diffuse ones, trigger a second layer: the LLM has to justify. If the justification wavers, that instability is data.", "Probabilidades sobrepostas; baixa confiança; raciocínio do LLM inconsistente": "Overlapping probabilities; low confidence; inconsistent LLM reasoning", "O investigador torna explícita a sua posição: a natureza do desacordo, as fontes possíveis do erro e o que a discrepância revela.": "The researcher makes their position explicit: the nature of the disagreement, possible sources of error and what the discrepancy reveals.", "Notas críticas humanas: desacordo, deteção de enviesamentos, reflexão epistémica": "Human critical notes: disagreement, bias detection, epistemic reflection", "Decisão final e refinamento teórico": "Final decision and theoretical refinement", "coanálise humano–IA com transparência epistémica": "human–AI co-analysis with epistemic transparency", "Na prática, o RUF mostra quais segmentos do texto ativam esse ciclo reflexivo — quando os códigos da IA competem ou revelam tensão semântica. Com isso, o investigador não só identifica padrões, mas também justifica as decisões interpretativas de forma transparente. Este processo reforça a responsabilidade epistemológica e a qualidade metodológica da análise.": "In practice, the RUF shows which text segments trigger this reflexive cycle — when the AI's codes compete or reveal semantic tension. The researcher thus not only identifies patterns but also justifies interpretive decisions transparently. This process strengthens epistemological responsibility and the methodological quality of the analysis.", "O corpus do exemplo · 9 composições do 5.º ano": "The example corpus · 9 compositions by 5th graders", "«Se eu fosse professor»": "“If I were a teacher”", "<b>Pergunta:<\/b> Quais são as características de um bom professor na perspetiva dos alunos? Há diferenças consoante o género?": "<b>Question:<\/b> What are the characteristics of a good teacher from the students' perspective? Are there differences by gender?", "Versão portuguesa reconstituída a partir do Apêndice A do artigo (Costa &amp; Bem-Haja, 2025). M = rapaz · F = rapariga.": "Compositions as given in Appendix A of the paper (Costa &amp; Bem-Haja, 2025). M = boy · F = girl.", "RUF aplicado à fase 5.5 · votem antes de revelar": "RUF applied to phase 5.5 · vote before revealing", "Sejam o codificador": "You are the coder", "Como usar: para cada caso, os alunos escolhem a categoria; depois revelem a classificação da IA, o feedback do LLM, a zona de ambiguidade e o comentário reflexivo. Comparem a distribuição da turma com as probabilidades do modelo: a turma também hesita?": "How to use: for each case, students choose a category; then reveal the AI's classification, the LLM feedback, the ambiguity zone and the reflexive commentary. Compare the class distribution with the model's probabilities: does the class hesitate too?", "Resumo · RUF aplicado na fase 5.5": "Summary · RUF applied in phase 5.5", "Seis dimensões, três momentos": "Six dimensions, three moments", "Dimensões do RUF": "RUF dimensions", "Exemplo no corpus": "Example in the corpus", "Classificação probabilística": "Probabilistic classification", "Zona de ambiguidade": "Ambiguity zone", "Comentário reflexivo": "Reflexive commentary", "Fixas, para qualquer corpus: ambiguidade, tensão, ausência. Variáveis, consoante o corpus: inversões, multiplicidade, conflito.": "Fixed, for any corpus: ambiguity, tension, absence. Variable, depending on the corpus: reversals, multiplicity, conflict.", "E se a decisão mais importante da vossa análise estiver num parâmetro que ninguém discute?": "What if the most important decision in your analysis sits in a parameter nobody discusses?", "TRANSIÇÃO — 30 s. Deixar a pergunta no ar antes de mostrar a instrução do Pattyn. Esta secção fecha a palestra e dura cerca de 8 minutos.": "TRANSITION — 30 s. Leave the question hanging before showing Pattyn's instruction. This section closes the talk and lasts about 8 minutes.", "O limiar": "The threshold", "O problema do limiar": "The threshold problem", "Pattyn (2024) recomenda instruir o modelo:": "Pattyn (2024) recommends instructing the model:", "Apresentado como higiene metodológica, é na verdade um critério de qualidade da análise": "Presented as methodological hygiene, it is in fact a criterion for the quality of the analysis", "Abaixo do limiar não está o erro do modelo, está o material que resiste à classificação": "Below the threshold lies not the model's error but the material that resists classification", "A ironia": "The irony", "Quatro décadas a recusar a convergência": "Four decades of refusing convergence", "MacLure (2013), St. Pierre e Jackson (2014), Koro-Ljungberg (2016)": "MacLure (2013), St. Pierre and Jackson (2014), Koro-Ljungberg (2016)", "A IA generativa não traz aqui um valor novo: reintroduz um valor já rejeitado, desta vez como parâmetro de configuração.": "Generative AI brings no new value here: it reintroduces a value already rejected, this time as a configuration parameter.", "E por isso sem debate.": "And therefore without debate.", "2 min. O limiar do Pattyn é o gancho: uma instrução de aparência trivial que decide o que entra na análise. A ironia é o argumento central da secção — a convergência regressa pela porta da automação, sem passar pela discussão metodológica.": "2 min. Pattyn's threshold is the hook: a seemingly trivial instruction that decides what enters the analysis. The irony is the section's central argument — convergence returns through the door of automation, without passing through methodological discussion.", "Laboratório · mexam no limiar": "Lab · move the threshold", "O que o limiar deixa passar": "What the threshold lets through", "Limiar de certeza": "Certainty threshold", "Hesitação": "Hesitation", "C3: «parava e mandava-os fazer outra coisa que preferissem»": "C3: “I'd stop and tell them to do something else they'd prefer”", "empatia": "empathy", "permissividade": "permissiveness", "<b>RUF:<\/b> proximidade de 4 pontos entre categorias + justificação instável do LLM → zona de ambiguidade interpretativa.": "<b>RUF:<\/b> a 4-point gap between categories + unstable LLM justification → zone of interpretive ambiguity.", "Confiança cega": "Blind confidence", "C7: «os que não aprendessem ficavam sentados no fundo da sala»": "C7: “those who didn't learn would be placed at the back of the classroom”", "autoridade": "authority", "<b>RUF:<\/b> só um gatilho independente da confiança o apanha: o comentário reflexivo humano sobre o peso simbólico da exclusão espacial.": "<b>RUF:<\/b> only a trigger independent of confidence catches it: the researcher's reflexive commentary on the symbolic weight of spatial exclusion.", "Silêncio": "Silence", "Corpus inteiro: quase nenhuma composição fala de provas ou avaliação": "Whole corpus: almost no composition mentions tests or assessment", "avaliação formal": "formal evaluation", "planificação": "planning", "<b>RUF:<\/b> declarar antes os temas que se espera encontrar; a ausência notável passa a achado, não a ruído.": "<b>RUF:<\/b> declare in advance the themes you expect to find; the notable absence becomes a finding, not noise.", "Só o primeiro modo melhora se o limiar descer. O segundo não deixa rasto; o terceiro converteria em ruído o que já descartava em silêncio.": "Only the first mode improves if the threshold is lowered. The second leaves no trace; the third would turn into noise what it was already discarding in silence.", "Como usar: com estes valores, a 40% as duas categorias da hesitação passam; subam acima de 68% para ver o limiar reter só a mais provável e acima de 72% para a descartar. Depois desçam até 0%: só a hesitação fica visível quando o limiar desce; a confiança cega passa sempre sem sinal; o silêncio passa de irrelevância a ruído. No fim liguem «Mostrar o que o RUF assinalaria».": "How to use: with these values, at 40% both hesitation categories pass; go above 68% to see the threshold keep only the most likely one, and above 72% to discard it. Then go down to 0%: only hesitation becomes visible as the threshold drops; blind confidence always passes without a signal; silence shifts from irrelevance to noise. Finally switch on “Show what the RUF would flag”.", "Três modos de falha do limiar": "Three ways the threshold fails", "Modo": "Mode", "O modelo produz": "The model outputs", "O limiar faz": "What the threshold does", "Fica por analisar": "Left unanalysed", "Para o detetar seria preciso": "Detecting it would require", "empatia 72% · permissividade 68%": "empathy 72% · permissiveness 68%", "descarta, ou retém a mais provável": "discards, or keeps the most likely", "a subdeterminação do material": "the underdetermination of the material", "proximidade entre categorias e instabilidade da justificação": "proximity between categories and instability of the justification", "autoridade 78%": "authority 78%", "deixa passar, sem qualquer sinal": "lets it through, with no signal at all", "o plano em que o enunciado é relevante": "the plane on which the statement matters", "um gatilho independente da confiança": "a trigger independent of confidence", "avaliação formal 22% · planificação 18%": "formal evaluation 22% · planning 18%", "lê como irrelevância": "reads it as irrelevance", "a ausência notável enquanto achado": "the notable absence as a finding", "declarar antes os temas que se espera encontrar": "declaring in advance the themes one expects to find", "3 min, o centro da secção. Percorrer as três linhas de cima para baixo. O argumento está na última coluna e na nota: só a hesitação melhora com um limiar mais baixo. A confiança cega não deixa rasto e o silêncio nem sequer é detetável por via distribucional. É aqui que ligo à demonstração do RUF.": "3 min, the centre of the section. Go through the three rows from top to bottom. The argument is in the last column and in the note: only hesitation improves with a lower threshold. Blind confidence leaves no trace and silence is not even detectable distributionally. This is where I link to the RUF demonstration.", "A permanência humana é uma exigência epistemológica": "Keeping the human in the loop is an epistemological requirement", "Não é uma precaução prudencial do tipo «a IA ainda comete erros»": "It is not a prudential precaution of the “AI still makes mistakes” kind", "Nenhum limiar deteta o que a distribuição não regista": "No threshold detects what the distribution does not register", "Há uma classe de omissões inacessível, por construção, ao instrumento que as comete": "There is a class of omissions that is, by construction, inaccessible to the instrument that commits them", "O mesmo gesto, noutro lugar": "The same gesture, elsewhere", "Para além da análise de dados": "Beyond data analysis", "A supressão da fricção é o argumento comercial com que a IA generativa entra no ensino superior": "Removing friction is the sales pitch with which generative AI enters higher education", "Mas a aprendizagem profunda exige precisamente esforço, fricção e ambiguidade": "Yet deep learning requires precisely effort, friction and ambiguity", "Numa instituição que forma quem há de interpretar, apagar o que é incerto é decidir o que conta como conhecer.": "In an institution that educates those who will interpret, erasing what is uncertain is deciding what counts as knowing.", "2 min. A primeira metade fecha o argumento metodológico. A segunda abre para a discussão: o mesmo gesto que apaga a hesitação na análise é o que promete remover o esforço na aprendizagem. Terminar aqui e passar à pergunta final.": "2 min. The first half closes the methodological argument. The second opens the discussion: the same gesture that erases hesitation in analysis is the one that promises to remove effort from learning. End here and move to the final question.", "Para terminar · uma palavra": "To finish · one word", "O que nunca deve sair das mãos do investigador?": "What should never leave the researcher's hands?", "Notas": "Notes", "Copiar ligação": "Copy link", "Fechar": "Close", "Alterar a ligação do código QR": "Change the QR code link", "Guardar": "Save", "Ainda em nenhuma": "None yet", "Ainda não uso IA": "I don't use AI yet", "Mostrar o que o RUF assinalaria": "Show what the RUF would flag"}, "ATTR": {"U.Porto · Faculdade de Psicologia e de Ciências da Educação": "U.Porto · Faculty of Psychology and Education Sciences", "Código QR de acesso a esta aula": "QR code to open this session", "Código QR para o artigo AbductivAI": "QR code for the AbductivAI paper", "A vossa resposta, em poucas palavras": "Your answer, in a few words", "Código QR para o artigo RUF": "QR code for the RUF paper", "Código QR do recurso RUF": "QR code for the RUF resource", "Modo": "Mode", "O modelo produz": "The model outputs", "O limiar faz": "What the threshold does", "Fica por analisar": "Left unanalysed", "Para o detetar seria preciso": "Detecting it would require", "Uma palavra": "One word", "Código QR do artigo AbductivAI": "QR code for the AbductivAI paper", "Código QR do artigo RUF": "QR code for the RUF paper", "Navegação": "Navigation", "Anterior": "Previous", "Anterior (←)": "Previous (←)", "Seguinte": "Next", "Seguinte (→)": "Next (→)", "Mostrar código QR": "Show QR code", "Código QR (Q)": "QR code (Q)", "Notas do apresentador": "Presenter notes", "Notas (N)": "Notes (N)", "Ecrã inteiro": "Full screen", "Ecrã inteiro (F)": "Full screen (F)", "Acesso à aula": "Access to the session", "Nova ligação": "New link"}};
+const I18N = I18N_DATA.I18N, ATTR = I18N_DATA.ATTR;
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 const store = {
   get(k) { try { const v = localStorage.getItem('aula9:' + k); return v ? JSON.parse(v) : null; } catch (e) { return null; } },
-  set(k, v) { try { localStorage.setItem('aula9:' + k, JSON.stringify(v)); } catch (e) {} }
+  set(k, v) { try { localStorage.setItem('aula9:' + k, JSON.stringify(v)); } catch (e) {} },
+  del(k) { try { localStorage.removeItem('aula9:' + k); } catch (e) {} }
 };
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const BAD_CHARS = new RegExp('[\\u0000-\\u001f\\u007f-\\u009f\\u00ad\\u200b-\\u200f\\u2028-\\u202e\\u2060-\\u206f\\ufeff]', 'g');
 const el = (tag, cls, txt) => { const e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; };
+const inClaude = !!(window.claude && typeof window.claude.use === 'function');
+
+/* ================= línguas ================= */
+let LANG = 'pt';
+const T = (pt, en) => LANG === 'en' ? en : pt;
+const tr = o => (o && typeof o === 'object') ? (LANG === 'en' ? o.en : o.pt) : o;
+// conteúdo gerado: as duas línguas ficam no DOM e o CSS mostra a ativa
+function duo(pt, en) { const f = document.createDocumentFragment(); f.append(el('span', 'lg-pt', pt), el('span', 'lg-en', en)); return f; }
+function dual(tag, cls, pt, en) { const e = el(tag, cls); e.append(duo(pt, en)); return e; }
+const SECTIONS = {'Abertura':'Opening','Ponto de partida':'Starting point','AbductivAI':'AbductivAI','Da conversa ao agente':'From chat to agent','RUF':'RUF','O limiar':'The threshold','Fecho':'Closing'};
+const norm = s => s.replace(/\s+/g, ' ').trim();
+const i18nNodes = [], i18nAttrs = [];
+function collectI18n(root) {
+  const walk = node => {
+    for (const c of Array.from(node.children)) {
+      const tg = c.tagName.toLowerCase();
+      if (tg === 'script' || tg === 'style' || tg === 'svg') continue;
+      const k = norm(c.innerHTML);
+      if (k && Object.prototype.hasOwnProperty.call(I18N, k)) { i18nNodes.push({el: c, pt: c.innerHTML, en: I18N[k]}); continue; }
+      walk(c);
+    }
+  };
+  walk(root);
+  $$('[placeholder],[aria-label],[title],[data-l],img[alt]', root).forEach(e => ['placeholder', 'aria-label', 'title', 'data-l', 'alt'].forEach(a => {
+    const v = e.getAttribute(a); if (v && Object.prototype.hasOwnProperty.call(ATTR, v)) i18nAttrs.push({el: e, a, pt: v, en: ATTR[v]});
+  }));
+}
 
 /* ================= conteúdo ================= */
 const CORPUS = [
-  {id:'C1', g:'M', t:'Se eu fosse professor, chegava sempre a horas para dar o exemplo aos alunos. Também preparava bem as aulas para que todos pudessem aprender e perceber a matéria. Era exigente com os meus alunos e não os deixava portar-se mal. Se se portassem mal, primeiro avisava-os e depois falava com os pais.'},
-  {id:'C2', g:'M', t:'Se eu fosse professor, tentava ajudar os alunos com mais dificuldades. Preparava bem as aulas para que todos me percebessem. Mas, quando tudo corresse bem, também acabava a aula mais cedo e deixava-os ir para o recreio.'},
-  {id:'C3', g:'F', t:'Se eu fosse professora, não deixava ninguém brincar nas minhas aulas; se o fizessem, eram logo castigados. Mas quando visse que estavam cansados, parava e mandava-os fazer outra coisa que preferissem.'},
-  {id:'C4', g:'F', t:'Se eu fosse professora, fazia muitas perguntas para aprendermos bem a matéria e também dava aos alunos a oportunidade de perguntarem o que não sabiam. Não os deixava andar à luta nem falar mal uns dos outros. Quem o fizesse era castigado e os pais eram avisados.'},
-  {id:'C5', g:'M', t:'Se eu fosse professor, nunca exigia demasiado dos alunos e deixava-os brincar sempre que quisessem. Não os chateava com muitos testes. As aulas eram cheias de jogos para aprendermos e também víamos muitos filmes.'},
-  {id:'C6', g:'F', t:'Se eu fosse professora, fazia muitas revisões antes dos testes. Todos os alunos iam conseguir responder. Quem não aprendesse tinha de estudar com os colegas que já sabiam a matéria. Também nunca deixava haver mau comportamento, palavrões ou chamar nomes aos colegas.'},
-  {id:'C7', g:'F', t:'Se eu fosse professora, castigava os alunos logo no início do ano. Exigia que todos se pusessem em sentido quando eu chegasse, e quem se mexesse sofria as consequências. Os que não aprendessem ficavam sentados no fundo da sala, para não perturbarem os colegas que queriam aprender.'},
-  {id:'C8', g:'M', t:'Se eu fosse professor, tentava ajudar os alunos mais fracos e perceber porque é que alguns tinham mais dificuldades, e oferecia sempre a minha ajuda. Não permitia distrações durante a aula, mas também me esforçava por criar momentos para fazermos atividades divertidas e nos rirmos juntos.'},
-  {id:'C9', g:'F', t:'Se eu fosse professora, garantia que todos os alunos aprendiam bem a matéria e que as aulas não eram aborrecidas. Ao mesmo tempo, incentivava os alunos a serem todos amigos uns dos outros, para se sentirem bem na escola.'}
+  {id:'C1', g:'M', pt:'Se eu fosse professor, chegava sempre a horas para dar o exemplo aos alunos. Também preparava bem as aulas para que todos pudessem aprender e perceber a matéria. Era exigente com os meus alunos e não os deixava portar-se mal. Se se portassem mal, primeiro avisava-os e depois falava com os pais.',
+   en:'If I were a teacher, I would always arrive on time to set an example for the students. I would also prepare my lessons well so that everyone could learn and understand the subjects. I would be strict with my students and would not allow them to misbehave. If they did misbehave, I would first warn them and then inform their parents.'},
+  {id:'C2', g:'M', pt:'Se eu fosse professor, tentava ajudar os alunos com mais dificuldades. Preparava bem as aulas para que todos me percebessem. Mas, quando tudo corresse bem, também acabava a aula mais cedo e deixava-os ir para o recreio.',
+   en:'If I were a teacher, I would try to help the students who have more difficulties. I would prepare the lessons well so that everyone could understand me. But when everything went well, I would also end the class earlier and let them go to recess.'},
+  {id:'C3', g:'F', pt:'Se eu fosse professora, não deixava ninguém brincar nas minhas aulas; se o fizessem, eram logo castigados. Mas quando visse que estavam cansados, parava e mandava-os fazer outra coisa que preferissem.',
+   en:'If I were a teacher, I would not allow anyone to play around during my classes; if they did, they would be punished immediately. But when I saw they were tired, I would stop and tell them to do something else they\'d prefer.'},
+  {id:'C4', g:'F', pt:'Se eu fosse professora, fazia muitas perguntas para aprendermos bem a matéria e também dava aos alunos a oportunidade de perguntarem o que não sabiam. Não os deixava andar à luta nem falar mal uns dos outros. Quem o fizesse era castigado e os pais eram avisados.',
+   en:'If I were a teacher, I would ask many questions so we could learn the material well; I would also give the students a chance to ask questions about what they didn’t know. I wouldn’t allow them to fight or speak badly about each other. Whoever did that would be punished, and their parents would be notified.'},
+  {id:'C5', g:'M', pt:'Se eu fosse professor, nunca exigia demasiado dos alunos e deixava-os brincar sempre que quisessem. Não os chateava com muitos testes. As aulas eram cheias de jogos para aprendermos e também víamos muitos filmes.',
+   en:'If I were a teacher, I would never ask too much of the students, and I would let them play whenever they wanted. I wouldn’t bother them with too many tests. Classes would be filled with games so we could learn, and we would also watch many movies.'},
+  {id:'C6', g:'F', pt:'Se eu fosse professora, fazia muitas revisões antes dos testes. Todos os alunos iam conseguir responder. Quem não aprendesse tinha de estudar com os colegas que já sabiam a matéria. Também nunca deixava haver mau comportamento, palavrões ou chamar nomes aos colegas.',
+   en:'If I were a teacher, I would do a lot of revision before tests. All students would be able to answer. Those who didn’t learn would have to study with classmates who already knew the material. I would also never allow bad behaviour or swearing in class or name-calling among classmates.'},
+  {id:'C7', g:'F', pt:'Se eu fosse professora, castigava os alunos logo no início do ano. Exigia que todos se pusessem em sentido quando eu chegasse, e quem se mexesse sofria as consequências. Os que não aprendessem ficavam sentados no fundo da sala, para não perturbarem os colegas que queriam aprender.',
+   en:'If I were a teacher, I would punish the students right at the beginning of the year. I would require all students to stand at attention upon my arrival, and any student who moved would face consequences. Those who didn’t learn would be placed at the back of the classroom so they wouldn’t disturb the classmates who wanted to learn.'},
+  {id:'C8', g:'M', pt:'Se eu fosse professor, tentava ajudar os alunos mais fracos e perceber porque é que alguns tinham mais dificuldades, e oferecia sempre a minha ajuda. Não permitia distrações durante a aula, mas também me esforçava por criar momentos para fazermos atividades divertidas e nos rirmos juntos.',
+   en:'If I were a teacher, I would try to help the weaker students. I would also try to understand why some students had more difficulties and would always offer my help. I would not permit distractions during class time; however, I would also make an effort to create opportunities for us to engage in enjoyable activities and share laughter.'},
+  {id:'C9', g:'F', pt:'Se eu fosse professora, garantia que todos os alunos aprendiam bem a matéria e que as aulas não eram aborrecidas. Ao mesmo tempo, incentivava os alunos a serem todos amigos uns dos outros, para se sentirem bem na escola.',
+   en:'If I were a teacher, I would make sure all the students learned the lessons well and that the lessons weren’t boring. At the same time, I would encourage students to all be friends with one another so they could feel good at school.'}
 ];
+const G = {M: {pt:'rapaz', en:'boy'}, F: {pt:'rapariga', en:'girl'}};
 const CASES = [
-  {id:'ruf1', dim:'Ambiguidade interpretativa', kind:'fixa', def:'Expressões que admitem várias interpretações, sem consenso claro.', c:'C3', mark:'parava e mandava-os fazer outra coisa que preferissem', ex:'C3: «parava e mandava-os fazer outra coisa que preferissem»',
-   opts:[['a','Empatia'],['b','Permissividade'],['ab','As duas']], p:[['Empatia',72],['Permissividade',68]],
-   llm:'«Ambas se aplicam: o tom é empático, mas a ausência de regulação pode indicar permissividade.»', zone:[true,'Duas categorias próximas (empatia vs. permissividade)'],
-   rc:'A IA atribuiu empatia, mas pode estar a confundir com perda de autoridade. O contexto emocional é ambíguo.'},
-  {id:'ruf2', dim:'Tensão entre categorias', kind:'fixa', def:'Códigos que competem ou se sobrepõem no mesmo segmento.', c:'C4', mark:'Não os deixava andar à luta nem falar mal uns dos outros', ex:'C4: disciplina com promoção de amizade',
-   opts:[['a','Disciplina'],['b','Cuidado coletivo'],['ab','As duas']], p:[['Disciplina',71],['Cuidado coletivo',69]],
-   llm:'«A disciplina está presente, mas com uma forte componente relacional. Ambas são justificáveis.»', zone:[true,'Tensão entre regulação e vínculo'],
-   rc:'A IA marca disciplina e empatia sem reconhecer que estas ideias se tensionam em contextos escolares reais.'},
-  {id:'ruf3', dim:'Inversões ou quebras de expectativas', kind:'variável', def:'Quando a expressão se afasta de padrões esperados, como papéis de género ou hierarquia.', c:'C7', mark:'castigava os alunos logo no início do ano', ex:'C7: rapariga propõe castigos severos',
-   opts:[['a','Autoridade'],['b','Severidade'],['ab','As duas']], p:[['Autoridade',77],['Severidade',74]],
-   llm:'«A intenção é impor respeito, mas o tom pode ser exagerado ou dramatizado.»', zone:[false,'Pontuação alta, mas quebra de expectativa cultural'],
-   rc:'A IA aplica autoridade com confiança, mas não percebe o desvio de norma social e de género.'},
-  {id:'ruf4', dim:'Ausência relevante (silêncio temático)', kind:'fixa', def:'Temas esperados que não aparecem, como a avaliação.', c:null, ex:'Quase nenhuma composição menciona provas ou avaliações',
-   opts:[['a','Avaliação formal'],['b','Planificação'],['n','Nenhuma: a ausência é o dado']], p:[['Avaliação formal',22],['Planificação',18]],
-   llm:'«Não há referência explícita. Pode ser uma omissão temática, mas não foi interpretada como tal.»', zone:[true,'Ausência detetada por humanos, não pela IA'],
-   rc:'A IA não reconheceu a ausência como dado analítico — uma limitação recorrente.'},
-  {id:'ruf5', dim:'Multiplicidade de posições', kind:'variável', def:'O professor como figura que acumula funções divergentes.', c:'C8', mark:'Não permitia distrações durante a aula, mas também me esforçava por criar momentos para fazermos atividades divertidas', ex:'C8: controlo rígido + recreação',
-   opts:[['a','Disciplina'],['b','Liberdade'],['ab','As duas']], p:[['Disciplina',67],['Liberdade',65]],
-   llm:'«Ambos os elementos estão presentes; há uma tentativa de equilibrar autoridade e diversão.»', zone:[true,'Sobreposição de categorias opostas'],
-   rc:'A IA colapsa controlo e liberdade como complementares, ignorando o dilema pedagógico.'},
-  {id:'ruf6', dim:'Conflito entre prática e desejo', kind:'variável', def:'Os alunos desejam uma prática e comparam-na com a oposta.', c:'C5', mark:'Não os chateava com muitos testes', ex:'C5: rejeição de provas, mas valorização dos jogos',
-   opts:[['a','Ludicidade'],['b','Crítica institucional'],['ab','As duas']], p:[['Ludicidade',70],['Crítica institucional',68]],
-   llm:'«A ludicidade é explícita, mas a passagem contém uma crítica implícita ao sistema de avaliação.»', zone:[true,'Desejo e crítica implícita coexistem'],
-   rc:'A IA reconhece ludicidade, mas não nota a crítica embutida ao modelo escolar tradicional.'}
+  {id:'ruf1', fixed:true, c:'C3',
+   dim:{pt:'Ambiguidade interpretativa', en:'Interpretive ambiguity'},
+   def:{pt:'Expressões que admitem várias interpretações, sem consenso claro.', en:'Expressions that allow multiple interpretations, with no clear consensus.'},
+   mark:{pt:'parava e mandava-os fazer outra coisa que preferissem', en:'I would stop and tell them to do something else they\'d prefer'},
+   ex:{pt:'C3: «parava e mandava-os fazer outra coisa que preferissem»', en:'C3: ‘I\'d stop and tell them to do something else they\'d prefer’'},
+   opts:[['a','Empatia','Empathy'],['b','Permissividade','Permissiveness'],['ab','As duas','Both']],
+   p:[[{pt:'Empatia', en:'Empathy'},72],[{pt:'Permissividade', en:'Permissiveness'},68]],
+   llm:{pt:'«Ambas se aplicam: o tom é empático, mas a ausência de regulação pode indicar permissividade.»', en:'“Both apply: the tone is empathetic, but the absence of regulation can indicate permissiveness.”'},
+   zone:[true, {pt:'Duas categorias próximas (empatia vs. permissividade)', en:'Two close categories (empathy vs. permissiveness)'}],
+   rc:{pt:'A IA atribuiu empatia, mas pode estar a confundir com perda de autoridade. O contexto emocional é ambíguo.', en:'The AI attributed empathy but may be confusing it with a loss of authority. The emotional context is ambiguous.'}},
+  {id:'ruf2', fixed:true, c:'C4',
+   dim:{pt:'Tensão entre categorias', en:'Tension between codes'},
+   def:{pt:'Códigos que competem ou se sobrepõem no mesmo segmento.', en:'Applied codes that compete or overlap in the same segment.'},
+   mark:{pt:'Não os deixava andar à luta nem falar mal uns dos outros', en:'I wouldn’t allow them to fight or speak badly about each other'},
+   ex:{pt:'C4: disciplina com promoção de amizade', en:'C4: discipline with friendship promotion'},
+   opts:[['a','Disciplina','Discipline'],['b','Cuidado coletivo','Collective care'],['ab','As duas','Both']],
+   p:[[{pt:'Disciplina', en:'Discipline'},71],[{pt:'Cuidado coletivo', en:'Collective care'},69]],
+   llm:{pt:'«A disciplina está presente, mas com uma forte componente relacional. Ambas são justificáveis.»', en:'“Discipline is present, but with a strong relational component. Both are justifiable.”'},
+   zone:[true, {pt:'Tensão entre regulação e vínculo', en:'Tension between regulation and bonding'}],
+   rc:{pt:'A IA marca disciplina e empatia sem reconhecer que estas ideias se tensionam em contextos escolares reais.', en:'The AI marks discipline and empathy without recognising that these ideas are in tension in real school contexts.'}},
+  {id:'ruf3', fixed:false, c:'C7',
+   dim:{pt:'Inversões ou quebras de expectativas', en:'Reversals or breaches of expectations'},
+   def:{pt:'Quando a expressão se afasta de padrões esperados, como papéis de género ou hierarquia.', en:'When the expression deviates from expected patterns, such as gender roles or hierarchy.'},
+   mark:{pt:'castigava os alunos logo no início do ano', en:'I would punish the students right at the beginning of the year'},
+   ex:{pt:'C7: rapariga propõe castigos severos', en:'C7: girl proposes severe punishment'},
+   opts:[['a','Autoridade','Authority'],['b','Severidade','Severity'],['ab','As duas','Both']],
+   p:[[{pt:'Autoridade', en:'Authority'},77],[{pt:'Severidade', en:'Severity'},74]],
+   llm:{pt:'«A intenção é impor respeito, mas o tom pode ser exagerado ou dramatizado.»', en:'“The intention is to command respect, but the tone can be exaggerated or dramatised.”'},
+   zone:[false, {pt:'Pontuação alta, mas quebra de expectativa cultural', en:'High score, but breach of cultural expectation'}],
+   rc:{pt:'A IA aplica autoridade com confiança, mas não percebe o desvio de norma social e de género.', en:'The AI applies authority with confidence but does not perceive the deviation from social and gender norms.'}},
+  {id:'ruf4', fixed:true, c:null,
+   dim:{pt:'Ausência relevante (silêncio temático)', en:'Relevant absence (thematic silence)'},
+   def:{pt:'Temas esperados que não aparecem, como a avaliação.', en:'Expected topics that don’t appear, such as evaluation.'},
+   ex:{pt:'Quase nenhuma composição menciona provas ou avaliações', en:'Almost no composition mentions tests or assessments'},
+   opts:[['a','Avaliação formal','Formal evaluation'],['b','Planificação','Planning'],['n','Nenhuma: a ausência é o dado','Neither: the absence is the data']],
+   p:[[{pt:'Avaliação formal', en:'Formal evaluation'},22],[{pt:'Planificação', en:'Planning'},18]],
+   llm:{pt:'«Não há referência explícita. Pode ser uma omissão temática, mas não foi interpretada como tal.»', en:'“There is no explicit reference. It may be a thematic omission, but it has not been interpreted as such.”'},
+   zone:[true, {pt:'Ausência detetada por humanos, não pela IA', en:'Absence detected by humans, not by the AI'}],
+   rc:{pt:'A IA não reconheceu a ausência como dado analítico — uma limitação recorrente.', en:'The AI did not identify the absence as analytical data — a recurring limitation.'}},
+  {id:'ruf5', fixed:false, c:'C8',
+   dim:{pt:'Multiplicidade de posições', en:'Multiplicity of positions'},
+   def:{pt:'O professor como figura que acumula funções divergentes.', en:'The teacher as a figure who accumulates divergent functions.'},
+   mark:{pt:'Não permitia distrações durante a aula, mas também me esforçava por criar momentos para fazermos atividades divertidas', en:'I would not permit distractions during class time; however, I would also make an effort to create opportunities for us to engage in enjoyable activities'},
+   ex:{pt:'C8: controlo rígido + recreação', en:'C8: strict control + recreation'},
+   opts:[['a','Disciplina','Discipline'],['b','Liberdade','Freedom'],['ab','As duas','Both']],
+   p:[[{pt:'Disciplina', en:'Discipline'},67],[{pt:'Liberdade', en:'Freedom'},65]],
+   llm:{pt:'«Ambos os elementos estão presentes; há uma tentativa de equilibrar autoridade e diversão.»', en:'“Both elements are present; there’s an attempt to balance authority and fun.”'},
+   zone:[true, {pt:'Sobreposição de categorias opostas', en:'Overlap of opposite categories'}],
+   rc:{pt:'A IA colapsa controlo e liberdade como complementares, ignorando o dilema pedagógico.', en:'The AI collapses control and freedom as complementary, ignoring the pedagogical dilemma.'}},
+  {id:'ruf6', fixed:false, c:'C5',
+   dim:{pt:'Conflito entre prática e desejo', en:'Conflict between practice and desire'},
+   def:{pt:'Os alunos desejam uma prática e comparam-na com a oposta.', en:'Students desire one practice and compare it with its opposite.'},
+   mark:{pt:'Não os chateava com muitos testes', en:'I wouldn’t bother them with too many tests'},
+   ex:{pt:'C5: rejeição de provas, mas valorização dos jogos', en:'C5: rejection of tests, but appreciation of games'},
+   opts:[['a','Ludicidade','Playfulness'],['b','Crítica institucional','Institutional criticism'],['ab','As duas','Both']],
+   p:[[{pt:'Ludicidade', en:'Playfulness'},70],[{pt:'Crítica institucional', en:'Institutional criticism'},68]],
+   llm:{pt:'«A ludicidade é explícita, mas a passagem contém uma crítica implícita ao sistema de avaliação.»', en:'“Playfulness is explicit, but the passage contains implicit criticism of the evaluation system.”'},
+   zone:[true, {pt:'Desejo e crítica implícita coexistem', en:'Desire and implicit criticism coexist'}],
+   rc:{pt:'A IA reconhece ludicidade, mas não nota a crítica embutida ao modelo escolar tradicional.', en:'The AI identifies playfulness but doesn’t notice the criticism embedded in the traditional school model.'}}
 ];
 const PHASES = [
-  {id:'1', pc:'--p1', name:'Pergunta de investigação e quadro teórico', sub:'ponto de entrada abdutivo: teoria + LLM',
-   h:'Formulam uma questão de investigação clara e definem um quadro teórico inicial que inclui os aspetos dedutivos e indutivos do estudo. Podem usar parte ou a totalidade dos dados para criar ou clarificar a pergunta.',
-   a:'Servem de ponto de entrada abdutivo: apoiam a exploração da teoria a partir da qual nasce a pergunta.'},
-  {id:'2', pc:'--p2', name:'Sistema inicial de categorias', sub:'categorias da teoria + emergentes',
-   h:'Elaboram um primeiro sistema de categorias baseado na teoria e em critérios de seleção preliminares (dedutivos).',
-   a:'A pedido dos humanos, propõem categorias emergentes a partir das perguntas orientadoras dos dados.'},
-  {id:'3', pc:'--p3', name:'Definição das diretrizes de codificação', sub:'regras + exemplos; a IA valida a lógica',
-   h:'Criam definições preliminares de categorias, exemplos-padrão e regras de codificação iniciais.',
-   a:'Validam a coerência destas diretrizes e sugerem ajustamentos, bem como propõem categorias adicionais (indutivo).'},
-  {id:'4', pc:'--p4', name:'Codificação colaborativa inicial', sub:'humanos + agentes codificam e comparam',
-   h:'Codificam parte dos dados em simultâneo com os agentes, analisam as categorias emergentes e ajustam-nas conforme necessário.',
-   a:'Codificam a mesma parte dos dados e destacam padrões, sugerindo possíveis novas categorias ou regras.'},
-  {id:'5', pc:'--p5', name:'Revisão de categorias e regras', sub:'rever a estrutura e detetar instabilidade',
-   h:'Depois de codificar 10–50% dos dados, fazem uma revisão crítica das categorias e das orientações.',
-   a:'Fornecem relatórios sobre a estabilidade e a coerência das categorias já codificadas, ajudando na decisão final sobre os ajustamentos.'},
-  {id:'5.5', pc:'--p1', name:'Ciclo de revisão CoT', sub:'diálogo: os agentes explicam e justificam', ruf:true,
-   h:'Inspecionam, contestam e refinam o percurso interpretativo, e não apenas o resultado final.',
-   a:'Externalizam os passos intermédios do raciocínio (Chain-of-Thought), explicando e justificando cada classificação.'},
-  {id:'6', pc:'--p4', name:'Codificação final', sub:'todos os dados + métricas de acordo',
-   h:'Codificam os restantes dados com base nas diretrizes e categorias estabilizadas.',
-   a:'Codificam em paralelo, o que permite a validação cruzada inter e intracodificadores: Kappa de Cohen, alfa de Krippendorff (2004) e técnica Delphi (Green, 2014).'},
-  {id:'7', pc:'--p3', name:'Validação final e resolução de ambiguidades', sub:'os humanos julgam, os agentes sugerem',
-   h:'Fazem a validação final das codificações, decidindo sobre casos complexos ou ambíguos.',
-   a:'Atuam como segundos codificadores ou peritos adicionais, garantindo maior validade e menor subjetividade.'},
-  {id:'8', pc:'--p1', name:'Interpretação e análise final', sub:'insights via CoT e análise',
-   h:'Fazem as análises qualitativas e quantitativas finais (descritivas), interpretando co-ocorrências, frequências, contingências e inferências das categorias face à questão inicial.',
-   a:'Fornecem apoio analítico, destacando tendências e potenciais relações.'}
+  {id:'1', pc:'--p1', name:{pt:'Pergunta de investigação e quadro teórico', en:'Research question and theoretical framework'}, sub:{pt:'ponto de entrada abdutivo: teoria + LLM', en:'abductive entry point: theory + LLMs'},
+   h:{pt:'Formulam uma questão de investigação clara e definem um quadro teórico inicial que inclui os aspetos dedutivos e indutivos do estudo. Podem usar parte ou a totalidade dos dados para criar ou clarificar a pergunta.', en:'Formulate a clear research question and define an initial theoretical framework that includes the deductive and inductive aspects of the study. They can use some or all of the data to create or clarify the question.'},
+   a:{pt:'Servem de ponto de entrada abdutivo: apoiam a exploração da teoria a partir da qual nasce a pergunta.', en:'Act as an abductive entry point: they support the exploration of the theory from which the question emerges.'}},
+  {id:'2', pc:'--p2', name:{pt:'Sistema inicial de categorias', en:'Initial category system'}, sub:{pt:'categorias da teoria + emergentes', en:'theory-based + emergent categories'},
+   h:{pt:'Elaboram um primeiro sistema de categorias baseado na teoria e em critérios de seleção preliminares (dedutivos).', en:'Draw up an initial category system based on theory and preliminary (deductive) selection criteria.'},
+   a:{pt:'A pedido dos humanos, propõem categorias emergentes a partir das perguntas orientadoras dos dados.', en:'At the humans’ request, propose emergent categories using the guiding questions of the data.'}},
+  {id:'3', pc:'--p3', name:{pt:'Definição das diretrizes de codificação', en:'Defining the coding guidelines'}, sub:{pt:'regras + exemplos; a IA valida a lógica', en:'rules + examples; AI validates the logic'},
+   h:{pt:'Criam definições preliminares de categorias, exemplos-padrão e regras de codificação iniciais.', en:'Create preliminary category definitions, standard examples and initial coding rules.'},
+   a:{pt:'Validam a coerência destas diretrizes e sugerem ajustamentos, bem como propõem categorias adicionais (indutivo).', en:'Validate the consistency of these guidelines and suggest adjustments, as well as proposing additional categories (inductive).'}},
+  {id:'4', pc:'--p4', name:{pt:'Codificação colaborativa inicial', en:'Initial collaborative coding'}, sub:{pt:'humanos + agentes codificam e comparam', en:'humans + agents co-code and compare'},
+   h:{pt:'Codificam parte dos dados em simultâneo com os agentes, analisam as categorias emergentes e ajustam-nas conforme necessário.', en:'Code part of the data simultaneously with the agents, review the emerging categories and adjust them as needed.'},
+   a:{pt:'Codificam a mesma parte dos dados e destacam padrões, sugerindo possíveis novas categorias ou regras.', en:'Code the same part of the data and highlight patterns, suggesting possible new categories or rules.'}},
+  {id:'5', pc:'--p5', name:{pt:'Revisão de categorias e regras', en:'Review of categories and rules'}, sub:{pt:'rever a estrutura e detetar instabilidade', en:'revise the structure, detect instability'},
+   h:{pt:'Depois de codificar 10–50% dos dados, fazem uma revisão crítica das categorias e das orientações.', en:'After coding 10–50% of the data, carry out a critical review of the categories and guidelines.'},
+   a:{pt:'Fornecem relatórios sobre a estabilidade e a coerência das categorias já codificadas, ajudando na decisão final sobre os ajustamentos.', en:'Provide reports on the stability and coherence of the categories already coded, helping with the final decision on adjustments.'}},
+  {id:'5.5', pc:'--p1', ruf:true, name:{pt:'Ciclo de revisão CoT', en:'CoT review loop'}, sub:{pt:'diálogo: os agentes explicam e justificam', en:'dialogue: agents explain and justify'},
+   h:{pt:'Inspecionam, contestam e refinam o percurso interpretativo, e não apenas o resultado final.', en:'Inspect, contest and refine the interpretive path, not just the final output.'},
+   a:{pt:'Externalizam os passos intermédios do raciocínio (Chain-of-Thought), explicando e justificando cada classificação.', en:'Externalise the intermediate reasoning steps (Chain-of-Thought), explaining and justifying each classification.'}},
+  {id:'6', pc:'--p4', name:{pt:'Codificação final', en:'Final coding'}, sub:{pt:'todos os dados + métricas de acordo', en:'all data + agreement metrics'},
+   h:{pt:'Codificam os restantes dados com base nas diretrizes e categorias estabilizadas.', en:'Code the remaining data based on the stabilised guidelines and categories.'},
+   a:{pt:'Codificam em paralelo, o que permite a validação cruzada inter e intracodificadores: Kappa de Cohen, alfa de Krippendorff (2004) e técnica Delphi (Green, 2014).', en:'Code in parallel, enabling inter- and intra-coder cross-validation: Cohen’s Kappa, Krippendorff’s alpha (2004) and the Delphi technique (Green, 2014).'}},
+  {id:'7', pc:'--p3', name:{pt:'Validação final e resolução de ambiguidades', en:'Final validation and resolving ambiguity'}, sub:{pt:'os humanos julgam, os agentes sugerem', en:'humans judge, agents suggest'},
+   h:{pt:'Fazem a validação final das codificações, decidindo sobre casos complexos ou ambíguos.', en:'Carry out the final validation of the coding, deciding on complex or ambiguous cases.'},
+   a:{pt:'Atuam como segundos codificadores ou peritos adicionais, garantindo maior validade e menor subjetividade.', en:'Act as second coders or additional experts, ensuring greater validity and less subjectivity.'}},
+  {id:'8', pc:'--p1', name:{pt:'Interpretação e análise final', en:'Interpretation and final analysis'}, sub:{pt:'insights via CoT e análise', en:'insights via CoT and analysis'},
+   h:{pt:'Fazem as análises qualitativas e quantitativas finais (descritivas), interpretando co-ocorrências, frequências, contingências e inferências das categorias face à questão inicial.', en:'Carry out the final qualitative and (descriptive) quantitative analyses, interpreting co-occurrences, frequencies, contingencies and inferences of the categories in relation to the original question.'},
+   a:{pt:'Fornecem apoio analítico, destacando tendências e potenciais relações.', en:'Provide analytical support, highlighting trends and potential relationships.'}}
 ];
 const LOOPS = [
-  {from:'4', to:'2', t:'A co-codificação revela a necessidade de novas categorias.'},
-  {from:'6', to:'5', t:'No fim da codificação, os desacordos humanos obrigam a ajustar inconsistências.'},
-  {from:'8', to:'1', t:'Os resultados desafiam a questão inicial e levam a um refinamento teórico.'}
+  {from:'4', to:'2', t:{pt:'A co-codificação revela a necessidade de novas categorias.', en:'Co-coding reveals the need for new categories.'}},
+  {from:'6', to:'5', t:{pt:'No fim da codificação, os desacordos humanos obrigam a ajustar inconsistências.', en:'At the end of coding, human disagreements require inconsistencies to be adjusted.'}},
+  {from:'8', to:'1', t:{pt:'Os resultados desafiam a questão inicial e levam a um refinamento teórico.', en:'The results challenge the initial question and lead to theoretical refinement.'}}
 ];
 const POLLS = {
-  fases: {type:'multi', exclusive:'nenhuma', opts:[['problema','Problema'],['revisao','Revisão da literatura'],['desenho','Desenho da investigação'],['recolha','Recolha de dados'],['analise','Análise de dados'],['resultados','Resultados'],['dissem','Disseminação'],['nenhuma','Ainda em nenhuma']]},
-  discordia: {type:'single', opts:[['sim','Sim, pode abrir alternativas'],['depende','Depende de como a usamos'],['nao','Não, acaba por impor']]},
-  papel: {type:'single', opts:[['assist','Assistente'],['colab','Colaborador semi-autónomo'],['copesq','Co-pesquisador reflexivo'],['nao','Ainda não uso IA']]},
+  fases: {type:'multi', exclusive:'nenhuma', opts:[['problema'],['revisao'],['desenho'],['recolha'],['analise'],['resultados'],['dissem'],['nenhuma']]},
+  discordia: {type:'single', opts:[['sim','Sim, pode abrir alternativas','Yes, it can open up alternatives'],['depende','Depende de como a usamos','It depends on how we use it'],['nao','Não, acaba por impor','No, it ends up imposing']]},
+  papel: {type:'single', opts:[['assist'],['colab'],['copesq'],['nao']]},
   confianca: {type:'text', max:140},
   palavra: {type:'word', max:24}
 };
@@ -1039,67 +1120,83 @@ function buildCorpus() {
   const box = $('#corpus');
   CORPUS.forEach(c => {
     const a = el('article', 'comp');
-    const h = el('header'); h.append(el('span', null, c.id), el('span', null, c.g === 'M' ? 'M · rapaz' : 'F · rapariga'));
-    a.append(h, el('p', null, c.t));
-    box.append(a);
+    const h = el('header'); h.append(el('span', null, c.id), dual('span', null, c.g + ' · ' + G[c.g].pt, c.g + ' · ' + G[c.g].en));
+    const p = el('p'); p.append(duo(c.pt, c.en));
+    a.append(h, p); box.append(a);
   });
 }
-function textWithMark(text, mark) {
-  const p = document.createDocumentFragment();
+function withMark(text, mark) {
+  const f = document.createDocumentFragment();
   const k = mark ? text.indexOf(mark) : -1;
-  if (k < 0) { p.append(text); return p; }
-  p.append(text.slice(0, k)); p.append(el('mark', null, mark)); p.append(text.slice(k + mark.length));
-  return p;
+  if (k < 0) { f.append(text); return f; }
+  f.append(text.slice(0, k)); f.append(el('mark', null, mark)); f.append(text.slice(k + mark.length));
+  return f;
 }
 let caseIdx = 0;
+const revealBtns = [];
 function buildCases() {
   const tabs = $('#caseTabs'), box = $('#cases');
   CASES.forEach((c, k) => {
-    const t = el('button', 'chip', (k + 1) + ' · ' + c.dim.replace(/ \(.*\)/, ''));
-    t.type = 'button'; t.setAttribute('role', 'tab'); t.dataset.case = k;
+    const t = el('button', 'chip'); t.type = 'button'; t.setAttribute('role', 'tab'); t.dataset.case = k;
+    t.append(duo((k + 1) + ' · ' + c.dim.pt.replace(/ \(.*\)/, ''), (k + 1) + ' · ' + c.dim.en.replace(/ \(.*\)/, '')));
     t.addEventListener('click', () => showCase(k));
     tabs.append(t);
     const pan = el('div', 'case'); pan.dataset.case = k; pan.setAttribute('role', 'tabpanel');
     const L1 = el('div', 'case-l');
-    const dimRow = el('div'); dimRow.append(el('p', 'kind', 'Dimensão ' + c.kind)); dimRow.append(el('p', 'dim', c.dim)); dimRow.append(el('p', 'def', c.def));
+    const dimRow = el('div');
+    dimRow.append(dual('p', 'kind', c.fixed ? 'Dimensão fixa' : 'Dimensão variável', c.fixed ? 'Fixed dimension' : 'Variable dimension'), dual('p', 'dim', c.dim.pt, c.dim.en), dual('p', 'def', c.def.pt, c.def.en));
     const bq = el('blockquote');
     if (c.c) {
       const comp = CORPUS.find(x => x.id === c.c);
-      bq.append(el('small', null, comp.id + ' · ' + (comp.g === 'M' ? 'rapaz' : 'rapariga') + ' · 5.º ano'));
-      bq.append(textWithMark(comp.t, c.mark));
+      bq.append(dual('small', null, comp.id + ' · ' + G[comp.g].pt + ' · 5.º ano', comp.id + ' · ' + G[comp.g].en + ' · 5th grade'));
+      const sp = el('span', 'lg-pt'); sp.append(withMark(comp.pt, c.mark.pt));
+      const se = el('span', 'lg-en'); se.append(withMark(comp.en, c.mark.en));
+      bq.append(sp, se);
     } else {
-      bq.append(el('small', null, 'Corpus inteiro · 9 composições'));
-      bq.append('Procurem no corpus: quantas composições falam de testes ou de avaliação? ');
-      const s = el('b', null, 'Só duas (C5 e C6), e de passagem.'); s.style.fontStyle = 'normal'; bq.append(s);
+      bq.append(dual('small', null, 'Corpus inteiro · 9 composições', 'Whole corpus · 9 compositions'));
+      const sp = el('span', 'lg-pt'); sp.append('Procurem no corpus: quantas composições falam de testes ou de avaliação? ');
+      const bp = el('b', null, 'Só duas (C5 e C6), e de passagem.'); bp.style.fontStyle = 'normal'; sp.append(bp);
+      const se = el('span', 'lg-en'); se.append('Search the corpus: how many compositions mention tests or assessment? ');
+      const be = el('b', null, 'Only two (C5 and C6), in passing.'); be.style.fontStyle = 'normal'; se.append(be);
+      bq.append(sp, se);
     }
-    const q = el('p', 'small', c.c ? 'Que categoria atribuíam ao trecho destacado?' : 'Que tema esperavam encontrar e quase não aparece?'); q.style.fontWeight = '700';
+    const q = c.c ? dual('p', 'small', 'Que categoria atribuíam ao trecho destacado?', 'Which category would you assign to the highlighted passage?')
+                  : dual('p', 'small', 'Que tema esperavam encontrar e quase não aparece?', 'Which theme did you expect to find that barely appears?');
+    q.style.fontWeight = '700';
     const pollBox = el('div', 'opts'); pollBox.dataset.poll = c.id;
     const meta = el('p', 'meta'); meta.dataset.meta = c.id;
-    const rv = el('button', 'btn primary', 'Revelar a análise'); rv.type = 'button';
-    rv.addEventListener('click', () => { pan.classList.toggle('revealed'); const on = pan.classList.contains('revealed'); R.hidden = !on; W.hidden = on; rv.textContent = on ? 'Esconder a análise' : 'Revelar a análise'; });
+    const rv = el('button', 'btn primary'); rv.type = 'button';
+    const W = dual('div', 'wait', 'Votem primeiro. Depois revelem o que o modelo vetorial, o LLM e o investigador fizeram com este caso.', 'Vote first. Then reveal what the vector model, the LLM and the researcher did with this case.');
+    const R = el('div'); R.hidden = true; R.style.cssText = 'display:flex;flex-direction:column;gap:12px';
+    const setRv = () => { const on = pan.classList.contains('revealed'); R.hidden = !on; W.hidden = on; rv.textContent = on ? T('Esconder a análise', 'Hide the analysis') : T('Revelar a análise', 'Reveal the analysis'); };
+    rv.addEventListener('click', () => { pan.classList.toggle('revealed'); setRv(); });
+    revealBtns.push(setRv);
     const act = el('div', 'case-act'); act.append(meta, rv);
     L1.append(dimRow, bq, q, pollBox, act);
     const R0 = el('div', 'case-r');
-    const W = el('div', 'wait', 'Votem primeiro. Depois revelem o que o modelo vetorial, o LLM e o investigador fizeram com este caso.');
-    const R = el('div'); R.hidden = true; R.style.cssText = 'display:flex;flex-direction:column;gap:12px';
-    const b1 = el('div', 'blk ai'); b1.append(el('h4', null, '1 · Classificação probabilística (vetorial)'));
-    c.p.forEach(([n, v]) => { const r = el('div', 'pbar'); r.append(el('span', null, n)); const tr = el('span', 'tr'); const i = el('i'); tr.append(i); tr.style.setProperty('--v', v); r.append(tr, el('span', null, v + '%')); b1.append(r); });
-    const b2 = el('div', 'blk ai'); b2.append(el('h4', null, 'Feedback do LLM (prompt reflexivo)'), el('p', 'llm', c.llm));
-    const b3 = el('div', 'blk'); b3.append(el('h4', null, '2 · Zona de ambiguidade interpretativa'));
-    const z = el('p', 'zone'); z.append(el('span', 'yn' + (c.zone[0] ? '' : ' no'), c.zone[0] ? 'Sim' : 'Não'), el('span', null, c.zone[1])); b3.append(z);
-    const b4 = el('div', 'blk hu'); b4.append(el('h4', null, '3 · Comentário reflexivo (investigador)'), el('p', 'rc', c.rc));
+    const b1 = el('div', 'blk ai'); b1.append(dual('h4', null, '1 · Classificação probabilística (vetorial)', '1 · Probabilistic classification (vector)'));
+    c.p.forEach(([n, v]) => { const r = el('div', 'pbar'); r.append(dual('span', null, n.pt, n.en)); const trk = el('span', 'tr'); trk.append(el('i')); trk.style.setProperty('--v', v); r.append(trk, el('span', null, v + '%')); b1.append(r); });
+    const b2 = el('div', 'blk ai'); b2.append(dual('h4', null, 'Feedback do LLM (prompt reflexivo)', 'LLM feedback (reflective prompting)'), dual('p', 'llm', c.llm.pt, c.llm.en));
+    const b3 = el('div', 'blk'); b3.append(dual('h4', null, '2 · Zona de ambiguidade interpretativa', '2 · Zone of interpretive ambiguity'));
+    const z = el('p', 'zone'); z.append(dual('span', 'yn' + (c.zone[0] ? '' : ' no'), c.zone[0] ? 'Sim' : 'Não', c.zone[0] ? 'Yes' : 'No'), dual('span', null, c.zone[1].pt, c.zone[1].en)); b3.append(z);
+    const b4 = el('div', 'blk hu'); b4.append(dual('h4', null, '3 · Comentário reflexivo (investigador)', '3 · Reflexive commentary (researcher)'), dual('p', 'rc', c.rc.pt, c.rc.en));
     R.append(b1, b2, b3, b4);
     R0.append(W, R);
     pan.append(L1, R0);
     box.append(pan);
+    setRv();
   });
   showCase(0);
-  const tb = $('#rufTable tbody');
+}
+function buildRufTable() {
+  const tb = $('#rufTable tbody'); tb.textContent = '';
+  const H = [T('Dimensões do RUF', 'RUF dimensions'), T('Exemplo no corpus', 'Example in the corpus'), T('Classificação probabilística', 'Probabilistic classification'), T('Zona de ambiguidade', 'Ambiguity zone'), T('Comentário reflexivo', 'Reflexive commentary')];
   CASES.forEach((c, k) => {
-    const tr = el('tr');
-    const cells = [[(k + 1) + '. ' + c.dim, 'Dimensões do RUF'], [c.ex, 'Exemplo no corpus'], [c.p.map(x => x[0] + ': ' + x[1] + '%').join(', '), 'Classificação probabilística'], [(c.zone[0] ? 'Sim – ' : 'Não – ') + c.zone[1].charAt(0).toLowerCase() + c.zone[1].slice(1), 'Zona de ambiguidade'], [c.rc, 'Comentário reflexivo']];
-    cells.forEach(([v, l], j) => { const td = el('td', j === 2 ? 'mono' : null, v); td.dataset.l = l; tr.append(td); });
-    tb.append(tr);
+    const tr2 = el('tr');
+    const z = tr(c.zone[1]);
+    const cells = [(k + 1) + '. ' + tr(c.dim), tr(c.ex), c.p.map(x => tr(x[0]) + ': ' + x[1] + '%').join(', '), (c.zone[0] ? T('Sim', 'Yes') : T('Não', 'No')) + ' – ' + z.charAt(0).toLowerCase() + z.slice(1), tr(c.rc)];
+    cells.forEach((v, j) => { const td = el('td', j === 2 ? 'mono' : null, v); td.dataset.l = H[j]; tr2.append(td); });
+    tb.append(tr2);
   });
 }
 function showCase(k) {
@@ -1109,12 +1206,12 @@ function showCase(k) {
 }
 function buildPhases() {
   const ol = $('#phaseOl');
-  PHASES.filter(p => p.id !== '5.5').forEach(p => { const li = el('li'); li.style.setProperty('--pc', 'var(' + p.pc + ')'); li.append(el('i', null, p.id)); li.append(p.name); ol.append(li); });
+  PHASES.filter(p => p.id !== '5.5').forEach(p => { const li = el('li'); li.style.setProperty('--pc', 'var(' + p.pc + ')'); li.append(el('i', null, p.id), duo(p.name.pt, p.name.en)); ol.append(li); });
   const list = $('#abList');
   PHASES.forEach((p, k) => {
     const b = el('button', 'ph'); b.type = 'button'; b.dataset.ph = p.id; b.style.setProperty('--pc', 'var(' + p.pc + ')');
-    const n = el('span', 'n', p.id); const t = el('span'); t.append(el('span', 'nm', p.name)); t.append(document.createElement('br')); t.append(el('span', 'sb', p.sub));
-    b.append(n, t);
+    const t = el('span'); t.append(dual('span', 'nm', p.name.pt, p.name.en), document.createElement('br'), dual('span', 'sb', p.sub.pt, p.sub.en));
+    b.append(el('span', 'n', p.id), t);
     b.addEventListener('click', () => { abSel = k; abLoop = null; renderAb(); });
     list.append(b);
   });
@@ -1123,27 +1220,26 @@ let abSel = 5, abLoop = null;
 function renderAb() {
   const p = PHASES[abSel];
   $$('#abList .ph').forEach((b, k) => {
-    b.setAttribute('aria-pressed', k === abSel && abLoop === null);
     const inLoop = abLoop !== null && (b.dataset.ph === LOOPS[abLoop].from || b.dataset.ph === LOOPS[abLoop].to);
+    b.setAttribute('aria-pressed', (abLoop === null && k === abSel) || inLoop ? 'true' : 'false');
     b.classList.toggle('dim', abLoop !== null && !inLoop);
-    if (abLoop !== null && inLoop) b.setAttribute('aria-pressed', 'true');
   });
   const d = $('#abDetail'); d.textContent = '';
   if (abLoop !== null) {
     const lp = LOOPS[abLoop];
-    d.append(el('p', 'eyebrow', 'Iteração do modelo'), el('p', 'dn', 'Da fase ' + lp.from + ' para a fase ' + lp.to), el('p', 'lead', lp.t));
+    d.append(el('p', 'eyebrow', T('Iteração do modelo', 'Model iteration')), el('p', 'dn', T('Da fase ' + lp.from + ' para a fase ' + lp.to, 'From phase ' + lp.from + ' to phase ' + lp.to)), el('p', 'lead', tr(lp.t)));
   } else {
-    d.append(el('p', 'eyebrow', 'Fase ' + p.id), el('p', 'dn', p.name), el('p', 'ds', p.sub));
+    d.append(el('p', 'eyebrow', T('Fase ', 'Phase ') + p.id), el('p', 'dn', tr(p.name)), el('p', 'ds', tr(p.sub)));
     const roles = el('div', 'roles');
-    const h = el('div', 'role hu'); h.append(el('h4', null, 'Humanos'), el('p', null, p.h));
-    const a = el('div', 'role ai'); a.append(el('h4', null, 'Agentes de IA'), el('p', null, p.a));
+    const h = el('div', 'role hu'); h.append(el('h4', null, T('Humanos', 'Humans')), el('p', null, tr(p.h)));
+    const a = el('div', 'role ai'); a.append(el('h4', null, T('Agentes de IA', 'AI agents')), el('p', null, tr(p.a)));
     roles.append(h, a); d.append(roles);
-    if (p.ruf) d.append(el('span', 'ruf-badge', 'Aqui entra o RUF: a incerteza como evidência'));
+    if (p.ruf) d.append(el('span', 'ruf-badge', T('Aqui entra o RUF: a incerteza como evidência', 'This is where the RUF comes in: uncertainty as evidence')));
   }
-  const lw = el('div', 'loops'); lw.append(el('p', 'eyebrow', 'Iterações · cliquem para destacar'));
+  const lw = el('div', 'loops'); lw.append(el('p', 'eyebrow', T('Iterações · cliquem para destacar', 'Iterations · click to highlight')));
   LOOPS.forEach((lp, k) => {
     const b = el('button', 'lp'); b.type = 'button'; b.setAttribute('aria-pressed', abLoop === k);
-    b.append(el('b', null, lp.from + ' → ' + lp.to), el('span', null, lp.t));
+    b.append(el('b', null, lp.from + ' → ' + lp.to), el('span', null, tr(lp.t)));
     b.addEventListener('click', () => { abLoop = abLoop === k ? null : k; renderAb(); });
     lw.append(b);
   });
@@ -1176,10 +1272,12 @@ function clean(id, v) {
   const t = v.replace(BAD_CHARS, '').replace(/\s+/g, ' ').trim().slice(0, p.max);
   return t || undefined;
 }
+const liveOn = () => !!(L.room && !L.dead);
+function modeOf() { return liveOn() ? 'live' : (S.read ? 'local' : 'manual'); }
 function tally() {
-  const T = {};
-  for (const id in POLLS) T[id] = {counts:{}, n:0, texts:[]};
-  const add = (id, v, me) => { const t = T[id]; t.n++; if (Array.isArray(v)) v.forEach(x => t.counts[x] = (t.counts[x] || 0) + 1); else if (POLLS[id].type === 'single') t.counts[v] = (t.counts[v] || 0) + 1; else t.texts.push({v, me}); };
+  const R = {};
+  for (const id in POLLS) R[id] = {counts:{}, n:0, texts:[]};
+  const add = (id, v, me) => { const t = R[id]; t.n++; if (Array.isArray(v)) v.forEach(x => t.counts[x] = (t.counts[x] || 0) + 1); else if (POLLS[id].type === 'single') t.counts[v] = (t.counts[v] || 0) + 1; else t.texts.push({v, me}); };
   if (liveOn()) {
     for (const peer of L.room.peers()) {
       if (peer.kind && peer.kind !== 'viewer') continue;
@@ -1189,41 +1287,31 @@ function tally() {
     }
   } else if (!S.read) {
     for (const id in POLLS) {
-      const m = manual[id] || {}; for (const k in m) T[id].counts[k] = m[k];
-      T[id].n = Object.values(m).reduce((a, b) => a + b, 0);
-      (manualTexts[id] || []).forEach(v => T[id].texts.push({v, me:false}));
+      const m = manual[id] || {}; for (const k in m) R[id].counts[k] = m[k];
+      R[id].n = Object.values(m).reduce((a, b) => a + b, 0);
+      (manualTexts[id] || []).forEach(v => R[id].texts.push({v, me:false}));
     }
   } else {
-    for (const id in POLLS) { const v = clean(id, mine[id]); if (v !== undefined && (POLLS[id].type === 'text' || POLLS[id].type === 'word')) T[id].texts.push({v, me:true}); }
+    for (const id in POLLS) { const v = clean(id, mine[id]); if (v !== undefined && (POLLS[id].type === 'text' || POLLS[id].type === 'word')) R[id].texts.push({v, me:true}); }
   }
-  return T;
+  return R;
 }
-const liveOn = () => !!(L.room && !L.dead);
-function modeOf() { return liveOn() ? 'live' : (S.read ? 'local' : 'manual'); }
-let T = {};
-function refreshPolls() { T = tally(); Object.keys(POLLS).forEach(updatePoll); updateLivePills(); }
+let TL = {};
+function refreshPolls() { TL = tally(); Object.keys(POLLS).forEach(updatePoll); updateLivePills(); }
 function buildDefaultOpts() {
   $$('[data-poll]').forEach(box => {
     const id = box.dataset.poll, p = POLLS[id];
     if (!p || (p.type !== 'single' && p.type !== 'multi')) return;
     if ($('[data-opt]', box)) return;
-    p.opts.forEach(([k, label]) => {
+    p.opts.forEach(([k, pt, en]) => {
       const b = el('button', 'opt'); b.type = 'button'; b.dataset.pollFor = id; b.dataset.opt = k;
-      b.append(el('span', 'fill'), el('span', 'lab', label), el('span', 'cnt'));
+      b.append(el('span', 'fill'), dual('span', 'lab', pt, en), el('span', 'cnt'));
       box.append(b);
     });
   });
-  $$('[data-poll-for][data-opt]').forEach(b => b.addEventListener('click', () => choose(b.dataset.pollFor, b.dataset.opt)));
-  $$('[data-poll] form.ask').forEach(f => f.addEventListener('submit', e => {
-    e.preventDefault(); const id = f.closest('[data-poll]').dataset.poll; const inp = $('input', f); const v = clean(id, inp.value);
-    if (!v) return;
-    if (modeOf() === 'manual') { (manualTexts[id] = manualTexts[id] || []).push(v); }
-    else { mine[id] = v; store.set('mine', mine); pushPresence(); }
-    inp.value = ''; refreshPolls();
-  }));
 }
 function choose(id, opt) {
-  const p = POLLS[id];
+  const p = POLLS[id]; if (!p) return;
   if (modeOf() === 'manual') { const m = manual[id] = manual[id] || {}; m[opt] = (m[opt] || 0) + 1; refreshPolls(); return; }
   if (p.type === 'single') { if (mine[id] === opt) delete mine[id]; else mine[id] = opt; }
   else {
@@ -1236,9 +1324,9 @@ function choose(id, opt) {
   store.set('mine', mine); pushPresence(); refreshPolls();
 }
 function updatePoll(id) {
-  const p = POLLS[id], t = T[id] || {counts:{}, n:0, texts:[]}, mode = modeOf();
+  const p = POLLS[id], t = TL[id] || {counts:{}, n:0, texts:[]}, mode = modeOf();
   if (p.type === 'single' || p.type === 'multi') {
-    const vals = Object.values(t.counts); const mx = Math.max(0, ...vals);
+    const mx = Math.max(0, ...Object.values(t.counts));
     const denom = mode === 'live' ? Math.max(1, t.n) : Math.max(1, mx);
     const my = mine[id];
     $$('[data-poll-for="' + id + '"][data-opt]').forEach(b => {
@@ -1254,21 +1342,22 @@ function updatePoll(id) {
   if (p.type === 'word') renderCloud(id, t);
   $$('[data-meta="' + id + '"]').forEach(m => {
     m.textContent = '';
-    if (mode === 'live') m.append(el('span', null, t.n + (t.n === 1 ? ' resposta' : ' respostas') + ' · ao vivo'));
+    if (mode === 'live') m.append(el('span', null, t.n + T(t.n === 1 ? ' resposta' : ' respostas', t.n === 1 ? ' response' : ' responses') + T(' · ao vivo', ' · live')));
     else if (mode === 'manual') {
-      m.append(el('span', null, p.type === 'text' || p.type === 'word' ? 'Modo manual: escrevam aqui o que a turma disser.' : 'Contagem manual: um clique por braço no ar.'));
-      const r = el('button', null, 'Repor'); r.type = 'button'; r.addEventListener('click', () => { delete manual[id]; delete manualTexts[id]; refreshPolls(); }); m.append(r);
-    } else m.append(el('span', null, 'A vossa resposta fica neste dispositivo. As respostas ao vivo precisam de sessão iniciada no Claude.'));
+      const txt = p.type === 'text' || p.type === 'word';
+      m.append(el('span', null, txt ? T('Modo manual: escrevam aqui o que a turma disser.', 'Manual mode: type here what the class says.') : T('Contagem manual: um clique por braço no ar.', 'Manual count: one click per raised hand.')));
+      const r = el('button', null, T('Repor', 'Reset')); r.type = 'button'; r.addEventListener('click', () => { delete manual[id]; delete manualTexts[id]; refreshPolls(); }); m.append(r);
+    } else m.append(el('span', null, T('A vossa resposta fica guardada só neste dispositivo.', 'Your answer is kept on this device only.') + (inClaude ? T(' As respostas ao vivo precisam de sessão iniciada no Claude.', ' Live answers require being signed in to Claude.') : '')));
   });
 }
 function renderWall(id, t) {
   const w = $('[data-wall="' + id + '"]'); if (!w) return;
   w.textContent = '';
   const items = t.texts.filter(x => !hidden.has(id + '|' + x.v)).slice(-48);
-  if (!items.length) { w.append(el('p', 'empty', 'As respostas vão aparecer aqui.')); return; }
+  if (!items.length) { w.append(el('p', 'empty', T('As respostas vão aparecer aqui.', 'Answers will appear here.'))); return; }
   items.forEach(x => {
     const c = el('div', 'resp' + (x.me ? ' me' : ''), x.v);
-    if (!S.read) { const b = el('button', 'x', '×'); b.type = 'button'; b.title = 'Ocultar neste ecrã'; b.setAttribute('aria-label', 'Ocultar resposta'); b.addEventListener('click', () => { hidden.add(id + '|' + x.v); refreshPolls(); }); c.append(b); }
+    if (!S.read) { const b = el('button', 'x', '×'); b.type = 'button'; b.title = T('Ocultar neste ecrã', 'Hide on this screen'); b.setAttribute('aria-label', T('Ocultar resposta', 'Hide answer')); b.addEventListener('click', () => { hidden.add(id + '|' + x.v); refreshPolls(); }); c.append(b); }
     w.append(c);
   });
 }
@@ -1276,8 +1365,8 @@ function renderCloud(id, t) {
   const w = $('[data-cloud="' + id + '"]'); if (!w) return;
   w.textContent = '';
   const freq = new Map();
-  t.texts.forEach(x => { const k = x.v.toLocaleLowerCase('pt-PT'); if (!hidden.has(id + '|' + k)) freq.set(k, (freq.get(k) || 0) + 1); });
-  if (!freq.size) { w.append(el('p', 'empty', 'As palavras vão aparecer aqui, maiores quanto mais vezes forem ditas.')); return; }
+  t.texts.forEach(x => { const k = x.v.toLocaleLowerCase(LANG === 'en' ? 'en' : 'pt-PT'); if (!hidden.has(id + '|' + k)) freq.set(k, (freq.get(k) || 0) + 1); });
+  if (!freq.size) { w.append(el('p', 'empty', T('As palavras vão aparecer aqui, maiores quanto mais vezes forem ditas.', 'Words will appear here, larger the more often they are given.'))); return; }
   const mx = Math.max(...freq.values());
   const base = S.read ? 18 : 30, span = S.read ? 26 : 70;
   Array.from(freq.entries()).sort((a, b) => b[1] - a[1]).slice(0, 40).forEach(([k, n]) => {
@@ -1287,7 +1376,7 @@ function renderCloud(id, t) {
   });
 }
 
-/* ================= ao vivo (room) ================= */
+/* ================= ao vivo (room, só dentro do Claude) ================= */
 let presTimer = null;
 function pushPresence() {
   if (!liveOn()) return;
@@ -1303,7 +1392,10 @@ function emitSlide() { if (L.admin && liveOn()) L.room.emit('slide', {i: S.i}).c
 function updateLivePills() {
   const on = liveOn() && L.connected;
   const n = liveOn() ? L.room.peers().filter(p => !p.kind || p.kind === 'viewer').length : 0;
-  $$('[data-livepill]').forEach(p => { p.classList.toggle('live', on); p.textContent = on ? 'Ao vivo · ' + n + (n === 1 ? ' ligado' : ' ligados') : (liveOn() ? 'A ligar…' : 'Respostas locais'); });
+  $$('[data-livepill]').forEach(p => {
+    p.classList.toggle('live', on);
+    p.textContent = on ? T('Ao vivo · ' + n + (n === 1 ? ' ligado' : ' ligados'), 'Live · ' + n + ' connected') : (liveOn() ? T('A ligar…', 'Connecting…') : T('Respostas locais', 'Local answers'));
+  });
   renderFollow();
 }
 function renderFollow() {
@@ -1312,11 +1404,11 @@ function renderFollow() {
   [fr, fp].forEach(b => b.classList.toggle('on', show));
   if (!show) return;
   const n = L.presenter.i + 1;
-  fr.textContent = 'Professor no ' + n + ' · ir';
-  fp.textContent = L.following ? 'A seguir o professor' : 'Seguir o professor (' + n + ')';
+  fr.textContent = T('Professor no ' + n + ' · ir', 'Presenter on ' + n + ' · go');
+  fp.textContent = L.following ? T('A seguir o professor', 'Following the presenter') : T('Seguir o professor (' + n + ')', 'Follow the presenter (' + n + ')');
 }
 async function initLive() {
-  if (!window.claude || typeof window.claude.use !== 'function') return;
+  if (!inClaude) return;
   let room = null, user = null;
   try { [room, user] = await Promise.all([window.claude.use('room'), window.claude.use('user')]); } catch (e) { return; }
   if (!room) return;
@@ -1338,6 +1430,7 @@ async function initLive() {
 
 /* ================= navegação ================= */
 const fragMax = s => $$('[data-f]', s).reduce((m, e) => Math.max(m, +e.dataset.f || 0), 0);
+function setHash(h) { try { history.replaceState(null, '', h); } catch (e) {} }
 function render(opts = {}) {
   slides.forEach((s, k) => {
     const on = k === S.i;
@@ -1346,10 +1439,11 @@ function render(opts = {}) {
   });
   const s = slides[S.i];
   $('#count').textContent = (S.i + 1) + ' / ' + slides.length;
-  $('#secLabel').textContent = s.dataset.section || '';
+  const sec = s.dataset.section || '';
+  $('#secLabel').textContent = LANG === 'en' ? (SECTIONS[sec] || sec) : sec;
   $('#progress i').style.width = (100 * (S.i + 1) / slides.length) + '%';
-  const nb = $('#notesBody'); const nt = $('.notes', s); nb.textContent = nt ? nt.textContent : 'Sem notas para este diapositivo.';
-  if (!opts.noHash) { try { history.replaceState(null, '', '#s' + (S.i + 1)); } catch (e) {} }
+  const nt = $('.notes', s); $('#notesBody').textContent = nt ? nt.textContent : T('Sem notas para este diapositivo.', 'No notes for this slide.');
+  if (!opts.noHash) setHash('#s' + (S.i + 1));
   if (s.id === 'abSlide') requestAnimationFrame(drawLoops);
   if (!opts.remote) emitSlide();
 }
@@ -1362,31 +1456,38 @@ function userNav() { if (L.presenter && !L.admin && L.following) { L.following =
 function next() { const n = fragMax(slides[S.i]); if (S.f < n) { S.f++; render({noHash:true}); } else if (S.i < slides.length - 1) goTo(S.i + 1); }
 function prev() { if (S.f > 0) { S.f--; render({noHash:true}); } else if (S.i > 0) goTo(S.i - 1, {end:true}); }
 
+function modeLabels() {
+  $$('[data-act="mode"]').forEach(b => {
+    const lbl = S.read ? T('Modo apresentação', 'Presentation mode') : T('Modo leitura (L)', 'Reading mode (L)');
+    b.title = lbl; b.setAttribute('aria-label', lbl);
+    if (b.classList.contains('btn')) b.textContent = S.read ? T('Diapositivos', 'Slides') : T('Leitura', 'Reading');
+  });
+}
 function applyMode() {
   const was = S.read;
   S.read = S.forced !== null ? S.forced : mqNarrow.matches;
   app.classList.toggle('read', S.read); app.classList.toggle('present', !S.read);
-  $$('[data-act="mode"]').forEach(b => { b.title = S.read ? 'Modo apresentação' : 'Modo leitura (L)'; if (b.classList.contains('btn')) b.textContent = S.read ? 'Diapositivos' : 'Leitura'; });
-  fit(); showCase(caseIdx); render({noHash:true}); refreshPolls();
+  modeLabels(); fit(); showCase(caseIdx); render({noHash:true}); refreshPolls();
   if (S.read && was !== S.read) requestAnimationFrame(() => slides[S.i].scrollIntoView({block:'start'}));
 }
 function fit() { if (S.read) return; const k = Math.min(innerWidth / 1600, innerHeight / 900); stage.style.setProperty('--k', k); }
 const mqNarrow = matchMedia('(max-width: 820px), (max-height: 520px)');
 mqNarrow.addEventListener ? mqNarrow.addEventListener('change', applyMode) : mqNarrow.addListener(applyMode);
-addEventListener('resize', () => { fit(); if (slides[S.i].id === 'abSlide' || S.read) drawLoops(); });
+addEventListener('resize', () => { fit(); drawLoops(); });
 
 const io = new IntersectionObserver(es => {
   if (!S.read) return;
-  es.forEach(e => { if (e.isIntersecting) { S.i = slides.indexOf(e.target); try { history.replaceState(null, '', '#s' + (S.i + 1)); } catch (x) {} } });
+  es.forEach(e => { if (e.isIntersecting) { S.i = slides.indexOf(e.target); setHash('#s' + (S.i + 1)); } });
 }, {rootMargin: '-40% 0px -55% 0px'});
 slides.forEach(s => io.observe(s));
 
 /* ================= QR ================= */
-function joinUrl() {
+function joinBase() {
   const o = store.get('url'); if (o) return o;
-  if (!window.claude && /^https?:$/.test(location.protocol)) return location.href.split('#')[0];
+  if (!inClaude && /^https?:$/.test(location.protocol)) return location.href.split('#')[0];
   return SHARE_URL || location.href.split('#')[0];
 }
+const joinUrl = () => joinBase().split('#')[0] + '#' + LANG;
 function drawQR(box, url) {
   box.textContent = '';
   if (typeof window.qrcode !== 'function') { box.append(el('span', 'qr-fallback', url)); return; }
@@ -1399,35 +1500,46 @@ function drawAllQR() {
   $$('[data-qr-url]').forEach(b => drawQR(b, b.dataset.qrUrl));
   $('#joinUrl').textContent = u;
 }
+function qrNote() {
+  $('#qrNote').textContent = inClaude
+    ? T('As respostas aparecem ao vivo no ecrã para quem abrir a aula com sessão iniciada no Claude e acesso a esta página. Sem isso, cada pessoa responde no seu dispositivo e o professor conta à mão.', 'Answers appear live on screen for anyone who opens the session signed in to Claude with access to this page. Otherwise, each person answers on their own device and the presenter counts by hand.')
+    : T('Neste endereço, cada pessoa responde no seu dispositivo e as respostas não são enviadas para nenhum servidor. O professor conta à mão no ecrã.', 'At this address, each person answers on their own device and answers are not sent to any server. The presenter counts by hand on screen.');
+}
 function toggleQR(force) {
   const o = $('#qrOverlay'); const show = force !== undefined ? force : o.hidden;
-  o.hidden = !show; if (show) { $('#urlInput').value = joinUrl(); $('[data-act="qrclose"]', o).focus(); }
+  o.hidden = !show; if (show) { $('#urlInput').value = joinBase(); $('[data-act="qrclose"]', o).focus(); }
 }
+function selectUrl() { const r = document.createRange(); r.selectNodeContents($('#joinUrl')); const s = getSelection(); s.removeAllRanges(); s.addRange(r); }
 $('#copyUrl').addEventListener('click', e => {
   const u = joinUrl(), b = e.currentTarget;
-  const done = ok => { b.textContent = ok ? 'Ligação copiada' : 'Selecionem o texto acima'; setTimeout(() => b.textContent = 'Copiar ligação', 2200); };
+  const done = ok => { b.textContent = ok ? T('Ligação copiada', 'Link copied') : T('Selecionem o texto acima', 'Select the text above'); setTimeout(() => { b.textContent = T('Copiar ligação', 'Copy link'); }, 2200); };
   try { navigator.clipboard.writeText(u).then(() => done(true), () => { selectUrl(); done(false); }); } catch (x) { selectUrl(); done(false); }
 });
-function selectUrl() { const r = document.createRange(); r.selectNodeContents($('#joinUrl')); const s = getSelection(); s.removeAllRanges(); s.addRange(r); }
-$('#urlForm').addEventListener('submit', e => { e.preventDefault(); const v = $('#urlInput').value.trim(); if (/^https?:\/\//.test(v)) store.set('url', v); else if (!v) { try { localStorage.removeItem('aula9:url'); } catch (x) {} } drawAllQR(); });
+$('#urlForm').addEventListener('submit', e => { e.preventDefault(); const v = $('#urlInput').value.trim(); if (/^https?:\/\//.test(v)) store.set('url', v.split('#')[0]); else if (!v) store.del('url'); drawAllQR(); });
 $('#qrOverlay').addEventListener('click', e => { if (e.target.id === 'qrOverlay') toggleQR(false); });
 
 /* ================= agente em ciclo ================= */
 let loopBusy = false, iter = 0;
+function loopLabel() {
+  const out = $('#iterOut'), btn = $('#runLoop');
+  if (iter === 0) { out.textContent = T('Iteração 0', 'Iteration 0'); btn.textContent = T('Correr um ciclo', 'Run a cycle'); return; }
+  if (loopBusy) { out.textContent = T('Iteração ', 'Iteration ') + iter; return; }
+  if (iter < 3) { out.textContent = T('Iteração ' + iter + ' · continuar? sim', 'Iteration ' + iter + ' · continue? yes'); btn.textContent = T('Correr mais um ciclo', 'Run another cycle'); }
+  else { out.textContent = T('Iteração 3 · continuar? não → retornar resultado', 'Iteration 3 · continue? no → return result'); btn.textContent = T('Recomeçar', 'Start again'); }
+}
 $('#runLoop').addEventListener('click', () => {
   if (loopBusy) return; loopBusy = true;
-  const li = $$('#agentSteps li'); const out = $('#iterOut'); const btn = $('#runLoop');
+  const li = $$('#agentSteps li');
   if (iter >= 3) iter = 0;
-  iter++; out.textContent = 'Iteração ' + iter;
+  iter++; loopLabel();
   let k = 0; const dt = reduced ? 60 : 520;
   const tick = () => {
     li.forEach((x, j) => x.classList.toggle('hot', j === k));
     k++;
     if (k <= li.length) { setTimeout(tick, dt); return; }
     li.forEach(x => x.classList.remove('hot'));
-    if (iter < 3) { out.textContent = 'Iteração ' + iter + ' · continuar? sim'; btn.textContent = 'Correr mais um ciclo'; }
-    else { out.textContent = 'Iteração 3 · continuar? não → retornar resultado'; btn.textContent = 'Recomeçar'; if (!S.read) { S.f = fragMax(slides[S.i]); render({noHash:true}); } }
-    loopBusy = false;
+    loopBusy = false; loopLabel();
+    if (iter >= 3 && !S.read) { S.f = fragMax(slides[S.i]); render({noHash:true}); }
   };
   tick();
 });
@@ -1435,25 +1547,39 @@ $('#runLoop').addEventListener('click', () => {
 /* ================= laboratório do limiar ================= */
 function labUpdate() {
   const t = +$('#lim').value; $('#limOut').textContent = t + '%';
-  $('#lab').style.setProperty('--t', t);
   $$('#lab .th').forEach(x => x.style.setProperty('--t', t));
-  $$('#lab .bar').forEach(b => { b.style.setProperty('--v', b.dataset.v); $('.tr i', b).style.setProperty('--v', b.dataset.v); b.classList.toggle('off', +b.dataset.v < t); });
+  $$('#lab .bar').forEach(b => { $('.tr i', b).style.setProperty('--v', b.dataset.v); b.classList.toggle('off', +b.dataset.v < t); });
   const set = (mode, cls, label, text) => { const c = $('#lab [data-mode="' + mode + '"]'); const s = $('[data-state]', c); s.className = 'state ' + cls; s.textContent = label; $('[data-out]', c).textContent = text; };
-  if (t > 72) set('hes', 'drop', 'Descartado', 'Par deixado vazio. O segmento sai da análise e ninguém fica a saber que houve hesitação.');
-  else if (t > 68) set('hes', 'none', 'Só a mais provável', 'Fica só «empatia». A permissividade desaparece sem deixar rasto.');
-  else set('hes', 'good', 'Visível', 'Ficam as duas categorias e a proximidade de 4 pontos fica à vista. Mas o limiar não a assinala: alguém tem de a ler.');
-  if (t > 78) set('cega', 'drop', 'Descartado', 'Par deixado vazio, mas pela razão errada: a confiança não mede o que falta.');
-  else set('cega', 'none', 'Sem rasto', '«Autoridade» passa sem qualquer sinal. O peso da exclusão no fundo da sala nunca é registado.');
-  if (t > 22) set('sil', 'none', 'Irrelevância', 'Ambas descartadas: o que não aparece é lido como irrelevante.');
-  else if (t > 18) set('sil', 'noise', 'Ruído', '«Avaliação formal» entra como código fraco. O silêncio passa a ruído.');
-  else set('sil', 'noise', 'Ruído', 'As duas entram como códigos fracos. O silêncio continua sem ser achado, agora como ruído.');
+  if (t > 72) set('hes', 'drop', T('Descartado', 'Discarded'), T('Par deixado vazio. O segmento sai da análise e ninguém fica a saber que houve hesitação.', 'Pair left empty. The segment leaves the analysis and nobody learns there was hesitation.'));
+  else if (t > 68) set('hes', 'none', T('Só a mais provável', 'Most likely only'), T('Fica só «empatia». A permissividade desaparece sem deixar rasto.', 'Only “empathy” remains. Permissiveness disappears without a trace.'));
+  else set('hes', 'good', T('Visível', 'Visible'), T('Ficam as duas categorias e a proximidade de 4 pontos fica à vista. Mas o limiar não a assinala: alguém tem de a ler.', 'Both categories remain and the 4-point gap is in view. But the threshold does not flag it: someone has to read it.'));
+  if (t > 78) set('cega', 'drop', T('Descartado', 'Discarded'), T('Par deixado vazio, mas pela razão errada: a confiança não mede o que falta.', 'Pair left empty, but for the wrong reason: confidence does not measure what is missing.'));
+  else set('cega', 'none', T('Sem rasto', 'No trace'), T('«Autoridade» passa sem qualquer sinal. O peso da exclusão no fundo da sala nunca é registado.', '“Authority” passes with no signal at all. The weight of exclusion at the back of the room is never recorded.'));
+  if (t > 22) set('sil', 'none', T('Irrelevância', 'Irrelevance'), T('Ambas descartadas: o que não aparece é lido como irrelevante.', 'Both discarded: what does not appear is read as irrelevant.'));
+  else if (t > 18) set('sil', 'noise', T('Ruído', 'Noise'), T('«Avaliação formal» entra como código fraco. O silêncio passa a ruído.', '“Formal evaluation” enters as a weak code. Silence becomes noise.'));
+  else set('sil', 'noise', T('Ruído', 'Noise'), T('As duas entram como códigos fracos. O silêncio continua sem ser achado, agora como ruído.', 'Both enter as weak codes. Silence is still not a finding; now it is noise.'));
 }
 $('#lim').addEventListener('input', labUpdate);
 $('#limReset').addEventListener('click', () => { $('#lim').value = 40; labUpdate(); });
 $('#rufOn').addEventListener('change', e => $('#lab').classList.toggle('ruf-on', e.target.checked));
 
+/* ================= língua ================= */
+function setLang(l, save) {
+  LANG = l === 'en' ? 'en' : 'pt';
+  app.dataset.lang = LANG; app.lang = LANG === 'en' ? 'en' : 'pt-PT';
+  try { document.documentElement.lang = app.lang; } catch (e) {}
+  i18nNodes.forEach(n => { n.el.innerHTML = LANG === 'en' ? n.en : n.pt; });
+  i18nAttrs.forEach(n => n.el.setAttribute(n.a, LANG === 'en' ? n.en : n.pt));
+  if (save) store.set('lang', LANG);
+  $$('[data-act="lang"]').forEach(b => { b.textContent = LANG === 'en' ? 'PT' : 'EN'; const a = LANG === 'en' ? 'Mudar para português' : 'Switch to English'; b.setAttribute('aria-label', a); b.title = a + ' (E)'; });
+  buildRufTable(); modeLabels(); refreshPolls(); labUpdate(); renderAb(); loopLabel(); revealBtns.forEach(f => f()); qrNote(); drawAllQR();
+  render({noHash:true});
+}
+
 /* ================= eventos globais ================= */
 document.addEventListener('click', e => {
+  const o = e.target.closest('[data-poll-for][data-opt]');
+  if (o) { choose(o.dataset.pollFor, o.dataset.opt); return; }
   const b = e.target.closest('[data-act]'); if (!b) return;
   const a = b.dataset.act;
   if (a === 'next') { userNav(); next(); }
@@ -1462,9 +1588,19 @@ document.addEventListener('click', e => {
   else if (a === 'qrclose') toggleQR(false);
   else if (a === 'notes') { const n = $('#notes'); n.hidden = !n.hidden; b.setAttribute('aria-pressed', !n.hidden); }
   else if (a === 'mode') { S.forced = !S.read; applyMode(); }
+  else if (a === 'lang') setLang(LANG === 'en' ? 'pt' : 'en', true);
   else if (a === 'fs') { try { if (document.fullscreenElement) document.exitFullscreen(); else document.documentElement.requestFullscreen().catch(() => {}); } catch (x) {} }
   else if (a === 'step') { const n = fragMax(slides[S.i]); if (S.f < n) { S.f++; render({noHash:true}); } }
   else if (a === 'restart') { S.f = 0; render({noHash:true}); }
+});
+document.addEventListener('submit', e => {
+  const f = e.target.closest('[data-poll] form.ask'); if (!f) return;
+  e.preventDefault();
+  const id = f.closest('[data-poll]').dataset.poll; const inp = $('input', f); const v = clean(id, inp.value);
+  if (!v) return;
+  if (modeOf() === 'manual') (manualTexts[id] = manualTexts[id] || []).push(v);
+  else { mine[id] = v; store.set('mine', mine); pushPresence(); }
+  inp.value = ''; refreshPolls();
 });
 $('#followRead').addEventListener('click', () => { if (L.presenter) slides[L.presenter.i].scrollIntoView({behavior: reduced ? 'auto' : 'smooth', block:'start'}); });
 $('#followPres').addEventListener('click', () => { if (!L.presenter) return; L.following = !L.following; if (L.following) goTo(L.presenter.i, {remote:true}); renderFollow(); pushPresence(); });
@@ -1474,6 +1610,7 @@ addEventListener('keydown', e => {
   const k = e.key;
   if (k === 'Escape') { toggleQR(false); $('#notes').hidden = true; return; }
   if (k === 'q' || k === 'Q') { toggleQR(); return; }
+  if (k === 'e' || k === 'E') { setLang(LANG === 'en' ? 'pt' : 'en', true); return; }
   if (S.read) return;
   const onBtn = e.target.closest && e.target.closest('button, a, summary');
   if (k === 'ArrowRight' || k === 'PageDown' || (k === ' ' && !onBtn)) { e.preventDefault(); userNav(); next(); }
@@ -1484,17 +1621,27 @@ addEventListener('keydown', e => {
   else if (k === 'f' || k === 'F') { $('[data-act="fs"]').click(); }
   else if (k === 'l' || k === 'L') { S.forced = true; applyMode(); }
 });
-addEventListener('hashchange', () => { const m = /^#s(\d+)$/.exec(location.hash); if (m) goTo(+m[1] - 1, {noHash:true}); });
+addEventListener('hashchange', () => {
+  const h = location.hash;
+  const lm = /^#(pt|en)$/.exec(h); if (lm) { setLang(lm[1], true); return; }
+  const m = /^#s(\d+)$/.exec(h); if (m) goTo(+m[1] - 1, {noHash:true});
+});
 
 /* ================= arranque ================= */
+collectI18n(app);
 buildCorpus(); buildCases(); buildPhases(); buildDefaultOpts();
-const m0 = /^#s(\d+)$/.exec(location.hash); if (m0) S.i = Math.max(0, Math.min(slides.length - 1, +m0[1] - 1));
-applyMode(); renderAb(); labUpdate(); drawAllQR();
+const h0 = location.hash;
+const lang0 = /^#(pt|en)$/.exec(h0);
+if (lang0) store.set('lang', lang0[1]);
+const m0 = /^#s(\d+)$/.exec(h0); if (m0) S.i = Math.max(0, Math.min(slides.length - 1, +m0[1] - 1));
+LANG = (lang0 && lang0[1]) || store.get('lang') || 'pt';
+applyMode(); setLang(LANG, false);
 if (S.read && S.i > 0) requestAnimationFrame(() => slides[S.i].scrollIntoView({block:'start'}));
 window.addEventListener('load', () => { if (typeof window.qrcode === 'function') drawAllQR(); drawLoops(); });
-document.fonts && document.fonts.ready.then(() => drawLoops());
+if (document.fonts) document.fonts.ready.then(() => drawLoops());
 initLive();
 })();
+
 </script>
 
 </body>
